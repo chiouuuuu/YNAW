@@ -77,7 +77,7 @@
 
         .wax-seal-img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: contain;
             filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.4));
         }
@@ -120,7 +120,6 @@
             border-color: #fde047;
         }
 
-        /* 新設計的「入學新生們」按鈕 */
         .magic-roster-btn {
             background: transparent;
             color: #1a1a1a;
@@ -145,6 +144,163 @@
             margin-bottom: 2.5rem;
             padding-bottom: 1rem;
         }
+
+        /* 首頁信封與動畫樣式 */
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 40px auto 0; 
+            min-height: 1150px; /* 增加容器高度以容納展開後的信件 */
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .envelope-img {
+            width: 100%;
+            max-width: 600px; 
+            height: auto;
+            transform: scale(1);
+            position: relative;
+            z-index: 10;
+            transition: all 0.8s ease-in-out;
+            pointer-events: auto;
+            margin: 0 auto;
+        }
+
+        .letter-paper {
+            position: absolute;
+            top: 10px; /* 向上微調起始位置 */
+            left: 0;
+            right: 0;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(150px) scale(0.95);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            pointer-events: none;
+        }
+
+        .envelope-container:hover .letter-paper,
+        .envelope-container.opened .letter-paper {
+            opacity: 1;
+            transform: translateY(-20px) scale(1); /* 懸停時略微向上升起，避免與信封重疊過多 */
+            z-index: 15;
+            pointer-events: auto;
+        }
+
+        .envelope-container:hover .envelope-img,
+        .envelope-container.opened .envelope-img {
+            z-index: 10;
+            transform: translateY(100px); /* 信封在開啟時向下移動，為信件騰出空間 */
+        }
+
+        /* 敘述段落樣式 */
+        .story-section {
+            width: 100%;
+            max-width: 48rem; 
+            margin-top: 35px; /* 顯著增加信封與下方文字的間距，防止重疊 */
+            text-align: left;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 20;
+            transition: transform 0.8s ease-in-out;
+        }
+        
+        .envelope-container.opened .story-section {
+            transform: translateY(120px); /* 信件打開時，文字進一步推開 */
+        }
+
+        /* 逐行淡入動畫 */
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .envelope-container.opened .fade-in-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 1s; }
+        .stagger-2 { transition-delay: 1.2s; }
+        .stagger-3 { transition-delay: 1.4s; }
+        .stagger-4 { transition-delay: 1.6s; }
+        .stagger-5 { transition-delay: 1.8s; }
+
+        .minimal-btn-square {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 0; 
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            transition: all 0.4s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .minimal-btn-square:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--magic-yellow);
+            color: var(--magic-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 信件內部的正式排版增強 */
+        .letter-border {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        .letter-header-logo {
+            display: block;
+            margin: 0 auto 1.5rem;
+            width: 80px;
+            height: auto;
+            filter: grayscale(1) opacity(0.8);
+        }
+
+        .letter-date {
+            text-align: right;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+
+        .letter-salutation {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: inline-block;
+            padding-right: 2rem;
+        }
+
+        .letter-body {
+            text-indent: 2em;
+            text-align: justify;
+        }
+
+        .letter-footer-signature {
+            margin-top: 3rem;
+            text-align: right;
+        }
+
+        .letter-seal-mini {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            width: 60px;
+            opacity: 0.3;
+        }
+
     </style>
 </head>
 <body>
@@ -167,40 +323,62 @@
     </nav>
 
     <!-- 首頁 -->
-    <main id="page-home" class="page-content active pt-24 pb-20">
+    <main id="page-home" class="page-content active pt-24 pb-20 overflow-hidden">
         <section class="flex flex-col items-center justify-center text-center px-4">
             <h1 class="serif text-6xl md:text-8xl font-bold mb-2 text-magic">你(不)是個巫師</h1>
-            <p class="text-xl text-white/60 italic mb-12">You're (Not) A Wizard</p>
+            <p class="text-xl text-white/60 italic mb-16">You're (Not) A Wizard</p>
             
-            <div class="document-paper serif mb-24 text-left">
-                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
-                <div class="letter-content">
-                    <div class="mb-10">
-                        <h2 class="text-3xl font-bold tracking-widest text-black/80">史密瑟頓魔法學院</h2>
-                        <p class="text-[9px] uppercase tracking-[0.4em] mt-1 font-bold opacity-60">Smitherton Academy</p>
-                    </div>
-                    <p class="font-bold mb-6 text-xl">入學委員會致函：</p>
-                    <p class="mb-8 text-[1.15rem] leading-relaxed">
-                        我們懷著極大的榮幸告知您，閣下已獲得進入<b>史密瑟頓魔法學院</b>就讀的機會。史密瑟頓魔法學院——這座世界上最崇高的魔法學術殿堂，守護著至高法術的古老傳承。閣下的入學資格業經確認，相關學雜費用亦已獲准全額減免。誠摯邀請閣下於今秋與各界菁英一同報到，在本校開啟輝煌的學術篇章。
-                    </p>
-                    <hr class="border-black/15 mb-6">
-                    <p class="text-[11px] italic text-gray-700/80 mb-2 leading-tight font-serif">
-                        Congratulations! You have been accepted to Smitherton Academy, the finest school for the study and practice of magic in this or any realm. Your placement is confirmed, tuition paid, and you are all set to begin matriculating with our elite student body this fall.
-                    </p>
-                </div>
-                <div class="wax-seal-bottom">
-                    <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&" alt="火漆印章" class="wax-seal-img">
-                </div>
-            </div>
+            <div id="envelope-wrapper" class="envelope-container" onmouseenter="openEnvelope()">
+                <!-- 信封圖片 -->
+                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467859721854648351/unnamed.png?ex=6981ea65&is=698098e5&hm=c81557a716a55a3a59fac768b702dd83f56dee805010ecffebdbdf944bfcb58c&" class="envelope-img" alt="魔法信封">
+                
+                <!-- 信件內容 (正式排版) -->
+                <div class="letter-paper">
+                    <div class="document-paper serif text-left">
+                        <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
+                        
+                        <div class="letter-border">
+                            <div class="letter-content">
+                                <div class="text-center mb-6">
+                                    <h2 class="text-3xl font-bold tracking-[0.3em] text-black/80">史密瑟頓魔法學院</h2>
+                                    <p class="text-[10px] uppercase tracking-[0.5em] mt-1 font-bold opacity-60">Smitherton Academy</p>
+                                </div>
+                    
+                                <div class="letter-salutation">
+                                    入學委員會致函：
+                                </div>
 
-            <div class="max-w-2xl p-10 bg-black/40 border-2 border-magic rounded-lg backdrop-blur-sm shadow-2xl text-left">
-                <h3 class="text-magic font-bold text-3xl mb-6 serif italic text-center">但，這一定是出了什麼問題...</h3>
-                <p class="text-xl leading-relaxed text-white/90 mb-6 font-medium">因為，你根本！完全！連一丁點魔法都不會！</p>
-                <p class="text-lg leading-relaxed text-white/80 mb-6">不知道是學校那邊的行政程序問題，還是宇宙在跟你開什麼玩笑，總之你這個這輩子連「發光術」都沒看過的普通人，竟然就這樣混進了這間傳說中的頂尖學院。</p>
-                <p class="text-lg leading-relaxed text-white/80 mb-6">不過既然頭都洗下去了，你決定豁出去，不拿到畢業證書絕對不走。現在對你來說，只有一件事最重要：<b class="text-magic">皮繃緊一點，絕對不能穿幫！！！</b></p>
-                <p class="text-lg leading-relaxed text-white/80 mb-10">要是那些老師或同學發現你其實是個普通人，你絕對會被趕出去。所以，隨機應變吧，如果運氣夠好，搞不好真的能瞞天過海混到畢業。畢竟，裝成巫師能有多難？</p>
-                <div class="text-center">
-                    <button onclick="showPage('orientation')" class="px-12 py-5 bg-magic text-teal-900 font-bold rounded-full hover:scale-105 transition-all shadow-lg shadow-yellow-500/30 text-lg uppercase tracking-wider">入學須知</button>
+                                <div class="letter-body text-[1.1rem] leading-[2] mb-10">
+                                    <p>
+                                        我們懷著極大的榮幸告知您，閣下已獲得進入<b>史密瑟頓魔法學院</b>就讀的機會。史密瑟頓魔法學院——這座世界上最崇高的魔法學術殿堂，守護著至高法術的古老傳承。閣下的入學資格業經確認，相關學雜費用亦已獲准全額減免。誠摯邀請閣下於今秋與各界菁英一同報到，在本校開啟輝煌的學術篇章。
+                                    </p>
+                                </div>
+
+                                <div class="letter-footer-signature">
+                                    <p class="font-bold">史密瑟頓魔法學院</p>
+                                    <p class="text-sm">入學委員會 謹啟</p>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-black/10">
+                                    <p class="text-[11px] italic text-gray-700/80 leading-relaxed font-serif">
+                                        Congratulations! You have been accepted to Smitherton Academy, the finest school for the study and practice of magic in this or any realm. Your placement is confirmed, tuition paid, and you are all set to begin matriculating with our elite student body this fall.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 敘述段落 -->
+                <div class="story-section">
+                    <h3 class="text-magic font-bold text-3xl mb-8 serif italic text-center fade-in-text stagger-1">但，這一定是出了什麼問題...</h3>
+                    <p class="text-xl leading-relaxed text-white/90 mb-6 font-medium fade-in-text stagger-2">因為，你根本！完全！連一丁點魔法都不會！</p>
+                    <p class="text-lg leading-relaxed text-white/80 mb-6 fade-in-text stagger-3">不知道是學校那邊的行政程序問題，還是宇宙在跟你開什麼玩笑，總之你這個這輩子連「發光術」都沒看過的普通人，竟然就這樣混進了這間傳說中的頂尖學院。</p>
+                    <p class="text-lg leading-relaxed text-white/80 mb-6 fade-in-text stagger-4">不過既然頭都洗下去了，你決定豁出去，不拿到畢業證書絕對不走。現在對你來說，只有一件事最重要：<b class="text-magic">皮繃緊一點，絕對不能穿幫！！！</b></p>
+                    <p class="text-lg leading-relaxed text-white/80 mb-10 fade-in-text stagger-5">要是那些老師或同學發現你其實是個普通人，你絕對會被趕出去。所以，隨機應變吧，如果運氣夠好，搞不好真的能瞞天過海混到畢業。畢竟，裝成巫師能有多難？</p>
+                    <div class="text-center mt-12 fade-in-text stagger-5">
+                        <button onclick="showPage('orientation')" class="minimal-btn-square serif">查看入學須知</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -210,12 +388,12 @@
     <section id="page-orientation" class="page-content pt-28 pb-32">
         <div class="max-w-5xl mx-auto px-6">
             <div class="document-paper serif">
-                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
                 
                 <div class="letter-content">
                     <div class="official-header flex justify-between items-center">
                         <div class="flex items-center">
-                            <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="w-16 h-16 mr-4 grayscale opacity-80">
+                            <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="w-16 h-16 mr-4 grayscale opacity-80">
                             <div>
                                 <h1 class="text-3xl font-black tracking-widest">史密瑟頓魔法學院 公告</h1>
                                 <p class="text-sm uppercase tracking-widest font-bold opacity-60">SMITHETON ACADEMY OFFICIAL BULLETIN</p>
@@ -263,7 +441,7 @@
                     <div class="mb-12">
                         <h4 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">進行方式</h4>
                         <div class="space-y-6 text-lg leading-relaxed text-justify">
-                            <p>你(不)是個巫師不需進行事前準備。與許多角色扮演遊戲（RPG）不同，YNAW 的故事並非預設好的。在遊戲開始之前，所有人都不知道遊戲將如何展開，或者故事會把你們帶往處。因此，故事將會充滿令人驚喜的變數！</p>
+                            <p>你(不)是個巫師不需進行事前準備。與許多角色扮演遊戲（RPG）運動不同，YNAW 的故事並非預設好的。在遊戲開始之前，所有人都不知道遊戲將如何展開，或者故事會把你們帶往處。因此，故事將會充滿令人驚喜的變數！</p>
                             <p>那麼，這一切是如何運作的呢？第一次聚會時，所有人會一起閱讀並完成「新生入學手冊」裡的內容：你們會一起描述學校的樣子、介紹各自的角色，並設定你們要面臨的挑戰。不需要覺得害羞，每個人都可以參與世界觀的建構中，大方地說出你的想法吧! 接著，你們就可以正式開始校園生活，DM將根據你們共同建構的內容進行後續的發展。</p>
                             <p>另外，雖然在一些部分，規則上提供了一些選項可以選擇，但千萬不要被選項侷限了！多多發揮你的創意吧！</p>
                         </div>
@@ -280,16 +458,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- 這裡原本的火漆印已移除 -->
             </div>
         </div>
     </section>
 
-    <!-- 頁面：入學新生 (Playbooks) -->
+    <!-- 頁面：入學新生 -->
     <section id="page-playbooks" class="page-content pt-28 pb-32">
         <div class="max-w-5xl mx-auto px-6">
             <div class="document-paper serif">
-                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
                 
                 <div class="letter-content">
                     <div class="official-header">
@@ -346,7 +523,6 @@
                         </div>
                     </div>
 
-                    <!-- 原本在入學須知的按鈕改到這裡 -->
                     <div class="flex justify-center mt-20 pt-10 border-t-2 border-black/10">
                         <button onclick="showPage('handbook')" class="magic-seal-btn serif">
                             <i class="fas fa-scroll mr-3"></i> 打開新生入學手冊
@@ -355,7 +531,7 @@
                 </div>
 
                 <div class="wax-seal-bottom">
-                    <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&" alt="火漆印章" class="wax-seal-img">
+                    <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&=&format=webp&quality=lossless&width=1175&height=1175" alt="火漆印章" class="wax-seal-img">
                 </div>
             </div>
         </div>
@@ -365,7 +541,7 @@
     <section id="page-handbook" class="page-content pt-28 pb-20">
         <div class="max-w-6xl mx-auto px-6">
             <div class="handbook-paper serif">
-                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
                 
                 <div class="letter-content">
                     <header class="mb-12 border-b-2 border-black/10 pb-8">
@@ -482,6 +658,22 @@
                 window.scrollTo(0, 0);
             }
         }
+
+        // 開啟信封動畫
+        let isOpened = false;
+        function openEnvelope() {
+            if (isOpened) return;
+            isOpened = true;
+            const wrapper = document.getElementById('envelope-wrapper');
+            wrapper.classList.add('opened');
+            
+            // 觸發文字淡入
+            setTimeout(() => {
+                const textElements = document.querySelectorAll('.fade-in-text');
+                textElements.forEach(el => el.classList.add('visible'));
+            }, 500);
+        }
+
         window.onload = () => {
             const hash = window.location.hash.replace('#', '');
             showPage(hash || 'home');
