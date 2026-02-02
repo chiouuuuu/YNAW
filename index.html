@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你(不)是個巫師 - 官方中文規則手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
+        
+        :root {
+            --magic-yellow: #fde047;
+            --teal-light: #0f766e;
+            --teal-dark: #134e4a;
+            --teal-deep: #06201e;
+            --paper-bg: #f4e4bc;
+            --wax-red: #8b0000;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-light) 100%);
+            color: #ffffff;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        .serif { font-family: 'Noto Serif TC', serif; }
+        .text-magic { color: var(--magic-yellow); }
+        .bg-magic { background-color: var(--magic-yellow); }
+
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+
+        .text-min-limit { font-size: 14px !important; }
+
+        .document-paper, .handbook-paper {
+            background-color: var(--paper-bg);
+            color: #1a1a1a;
+            padding: 4rem 3.5rem; 
+            border-radius: 2px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid #d4c4a8;
+            line-height: 1.8;
+        }
+
+        .document-paper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .school-emblem-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px; 
+            height: 500px;
+            object-fit: contain;
+            opacity: 0.06; 
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wax-seal-bottom {
+            position: absolute;
+            bottom: -60px; 
+            left: 50%;
+            transform: translateX(-50%); 
+            width: 150px; 
+            height: 150px;
+            z-index: 20;
+        }
+
+        .wax-seal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.4));
+        }
+
+        .letter-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .nav-btn { position: relative; padding-bottom: 4px; font-size: 14px; }
+        .nav-btn.active-nav { color: var(--magic-yellow); }
+        .nav-btn.active-nav::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+            background-color: var(--magic-yellow); box-shadow: 0 0 8px var(--magic-yellow);
+        }
+
+        /* 火漆封緘按鈕樣式 */
+        .magic-seal-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background: var(--wax-red);
+            color: #fde047;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            border: 2px solid #5a0000;
+            border-radius: 4px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .magic-seal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: inset 0 0 20px rgba(253, 224, 71, 0.2), 0 6px 20px rgba(139, 0, 0, 0.4);
+            border-color: #fde047;
+        }
+
+        /* 新設計的「入學新生們」按鈕 */
+        .magic-roster-btn {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            padding: 0.75rem 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .magic-roster-btn:hover {
+            background: #1a1a1a;
+            color: var(--paper-bg);
+        }
+
+        .official-header {
+            border-bottom: 3px double #333;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 全域導覽列 -->
+    <nav class="fixed w-full z-50 bg-[#06201e]/90 border-b border-yellow-500/20 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
+                <span class="text-xl font-bold tracking-tighter text-magic">YNAW<span class="text-white/50 text-sm ml-1">TRPG</span></span>
+            </div>
+            
+            <div class="hidden lg:flex space-x-6 font-bold uppercase tracking-widest">
+                <button id="nav-orientation" onclick="showPage('orientation')" class="nav-btn hover:text-magic transition">新生入學手續</button>
+                <button id="nav-handbook" onclick="showPage('handbook')" class="nav-btn hover:text-magic transition">新生手冊</button>
+                <button id="nav-playbooks" onclick="showPage('playbooks')" class="nav-btn hover:text-magic transition">入學新生</button>
+                <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">如何行動</button>
+                <button id="nav-topsecret" onclick="showPage('topsecret')" class="nav-btn text-red-400 hover:text-red-300 transition">魔法學院院長機密手冊</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁 -->
+    <main id="page-home" class="page-content active pt-24 pb-20">
+        <section class="flex flex-col items-center justify-center text-center px-4">
+            <h1 class="serif text-6xl md:text-8xl font-bold mb-2 text-magic">你(不)是個巫師</h1>
+            <p class="text-xl text-white/60 italic mb-12">You're (Not) A Wizard</p>
+            
+            <div class="document-paper serif mb-24 text-left">
+                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                <div class="letter-content">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold tracking-widest text-black/80">史密瑟頓魔法學院</h2>
+                        <p class="text-[9px] uppercase tracking-[0.4em] mt-1 font-bold opacity-60">Smitherton Academy</p>
+                    </div>
+                    <p class="font-bold mb-6 text-xl">入學委員會致函：</p>
+                    <p class="mb-8 text-[1.15rem] leading-relaxed">
+                        我們懷著極大的榮幸告知您，閣下已獲得進入<b>史密瑟頓魔法學院</b>就讀的機會。史密瑟頓魔法學院——這座世界上最崇高的魔法學術殿堂，守護著至高法術的古老傳承。閣下的入學資格業經確認，相關學雜費用亦已獲准全額減免。誠摯邀請閣下於今秋與各界菁英一同報到，在本校開啟輝煌的學術篇章。
+                    </p>
+                    <hr class="border-black/15 mb-6">
+                    <p class="text-[11px] italic text-gray-700/80 mb-2 leading-tight font-serif">
+                        Congratulations! You have been accepted to Smitherton Academy, the finest school for the study and practice of magic in this or any realm. Your placement is confirmed, tuition paid, and you are all set to begin matriculating with our elite student body this fall.
+                    </p>
+                </div>
+                <div class="wax-seal-bottom">
+                    <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&" alt="火漆印章" class="wax-seal-img">
+                </div>
+            </div>
+
+            <div class="max-w-2xl p-10 bg-black/40 border-2 border-magic rounded-lg backdrop-blur-sm shadow-2xl text-left">
+                <h3 class="text-magic font-bold text-3xl mb-6 serif italic text-center">但，這一定是出了什麼問題...</h3>
+                <p class="text-xl leading-relaxed text-white/90 mb-6 font-medium">因為，你根本！完全！連一丁點魔法都不會！</p>
+                <p class="text-lg leading-relaxed text-white/80 mb-6">不知道是學校那邊的行政程序問題，還是宇宙在跟你開什麼玩笑，總之你這個這輩子連「發光術」都沒看過的普通人，竟然就這樣混進了這間傳說中的頂尖學院。</p>
+                <p class="text-lg leading-relaxed text-white/80 mb-6">不過既然頭都洗下去了，你決定豁出去，不拿到畢業證書絕對不走。現在對你來說，只有一件事最重要：<b class="text-magic">皮繃緊一點，絕對不能穿幫！！！</b></p>
+                <p class="text-lg leading-relaxed text-white/80 mb-10">要是那些老師或同學發現你其實是個普通人，你絕對會被趕出去。所以，隨機應變吧，如果運氣夠好，搞不好真的能瞞天過海混到畢業。畢竟，裝成巫師能有多難？</p>
+                <div class="text-center">
+                    <button onclick="showPage('orientation')" class="px-12 py-5 bg-magic text-teal-900 font-bold rounded-full hover:scale-105 transition-all shadow-lg shadow-yellow-500/30 text-lg uppercase tracking-wider">入學須知</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁面：新生入學手續 -->
+    <section id="page-orientation" class="page-content pt-28 pb-32">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="document-paper serif">
+                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                
+                <div class="letter-content">
+                    <div class="official-header flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="w-16 h-16 mr-4 grayscale opacity-80">
+                            <div>
+                                <h1 class="text-3xl font-black tracking-widest">史密瑟頓魔法學院 公告</h1>
+                                <p class="text-sm uppercase tracking-widest font-bold opacity-60">SMITHETON ACADEMY OFFICIAL BULLETIN</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-4xl font-black text-center mt-8 mb-12 tracking-tighter">入學須知</h2>
+
+                    <div class="mb-10 text-center py-8 border-y-2 border-black/5">
+                        <p class="text-2xl leading-tight font-black mb-3">
+                            你(不)是個巫師（You're (Not) A Wizard, 簡稱 YNAW）
+                        </p>
+                        <p class="text-xl font-bold opacity-90 mb-6">是一款桌上角色扮演遊戲（TTRPG）。</p>
+                        <p class="text-min-limit tracking-widest bg-black text-white inline-block px-6 py-2">建議 3-6 名玩家參加。團務可以是一次結束，也可以分多次進行。</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 mb-10 border border-black/10">
+                        <div class="p-8 border-b md:border-b-0 md:border-r border-black/10">
+                            <h4 class="font-black text-xl mb-4 flex items-center gap-2"><span class="w-2 h-2 bg-black rounded-full"></span>共同敘事</h4>
+                            <p class="text-min-limit leading-relaxed opacity-80">每個人都將參與建構世界、發想角色、應對各種挑戰以及決定整個故事走向。</p>
+                        </div>
+                        <div class="p-8 border-b md:border-b-0 md:border-r border-black/10 bg-black/[0.02]">
+                            <h4 class="font-black text-xl mb-4 flex items-center gap-2"><span class="w-2 h-2 bg-black rounded-full"></span>遊戲主持人</h4>
+                            <p class="text-min-limit leading-relaxed opacity-80">一位玩家將擔任魔法學院院長（Dean of Magics, DM），負責推動遊戲與製造阻礙。</p>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="font-black text-xl mb-4 flex items-center gap-2"><span class="w-2 h-2 bg-black rounded-full"></span>適合什麼玩家？</h4>
+                            <p class="text-min-limit leading-relaxed opacity-80">這款遊戲歡迎所有年齡層，但史密瑟頓魔法學院不歡迎任何歧視者或偏激份子。</p>
+                        </div>
+                    </div>
+
+                    <!-- 安全工具 -->
+                    <div class="mb-12 p-8 border-2 border-dashed border-black/20 bg-white/40">
+                        <div class="flex items-center mb-4">
+                            <h3 class="font-black text-xl uppercase">安全工具 (Safety Tools)</h3>
+                        </div>
+                        <p class="text-min-limit leading-relaxed opacity-80 mb-4">這是一段輕鬆、甚至可能有點無厘頭的學校生活。建議在開始前花一些時間討論：想在遊戲中看到及不想看到的內容。</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-min-limit leading-relaxed opacity-80">
+                            <p><b>線 (Lines)</b> 是玩家不希望出現在團務中的主題。一旦劃定，這些主題將不會出現在故事中。</p>
+                            <p><b>幃幕 (Veils)</b> 是可以出現在遊戲中，但希望快速帶過或在鏡頭外發生的內容。</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-12">
+                        <h4 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">進行方式</h4>
+                        <div class="space-y-6 text-lg leading-relaxed text-justify">
+                            <p>你(不)是個巫師不需進行事前準備。與許多角色扮演遊戲（RPG）不同，YNAW 的故事並非預設好的。在遊戲開始之前，所有人都不知道遊戲將如何展開，或者故事會把你們帶往處。因此，故事將會充滿令人驚喜的變數！</p>
+                            <p>那麼，這一切是如何運作的呢？第一次聚會時，所有人會一起閱讀並完成「新生入學手冊」裡的內容：你們會一起描述學校的樣子、介紹各自的角色，並設定你們要面臨的挑戰。不需要覺得害羞，每個人都可以參與世界觀的建構中，大方地說出你的想法吧! 接著，你們就可以正式開始校園生活，DM將根據你們共同建構的內容進行後續的發展。</p>
+                            <p>另外，雖然在一些部分，規則上提供了一些選項可以選擇，但千萬不要被選項侷限了！多多發揮你的創意吧！</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-20 pt-10 border-t-2 border-black/10">
+                        <div class="text-min-limit font-bold opacity-40 uppercase tracking-widest">
+                            © Smitherton Academy Registrar
+                        </div>
+                        <div class="text-center">
+                            <button onclick="showPage('playbooks')" class="magic-roster-btn serif">
+                                <i class="fas fa-users mr-3"></i> 入學新生名冊
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 這裡原本的火漆印已移除 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁面：入學新生 (Playbooks) -->
+    <section id="page-playbooks" class="page-content pt-28 pb-32">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="document-paper serif">
+                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                
+                <div class="letter-content">
+                    <div class="official-header">
+                        <h1 class="text-3xl font-black tracking-widest">入學新生名冊</h1>
+                        <p class="text-sm uppercase tracking-widest font-bold opacity-60">STUDENT ROSTER & CHARACTER CREATION</p>
+                    </div>
+
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">角色創建 (Character Creation)</h2>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex gap-4">
+                                <span class="font-bold">1.</span>
+                                <div><b>選擇扮演書：</b> 每位玩家應選擇不同的扮演書。</div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold">2.</span>
+                                <div>
+                                    <b>分配能力值 (Assign your stats)：</b> 將 +2, +1, -1 分配給以下三種能力：
+                                    <ul class="mt-4 space-y-3 pl-6 border-l-2 border-black/10">
+                                        <li><b class="text-xl">Brains (腦力)</b> - 代表知識儲備以及解決問題的能力。</li>
+                                        <li><b class="text-xl">Brawn (體魄)</b> - 代表基本身體素質，包括力量和速度。</li>
+                                        <li><b class="text-xl">Bravado (氣場)</b> - 代表個性影響力以及說服或欺騙他人的能力。</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="font-bold">3.</span>
+                                <div>接著為你的角色取一個名字、設定代名詞、進行簡短的描述，以及設定一至兩個性格特徵（在遊戲過程中逐步塑造角色性格也是OK的！）。</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-16">
+                        <h2 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">扮演書</h2>
+                        <p class="text-lg opacity-80 mb-10 italic">劇本詳細內容載入中，請諮詢學院院長 (DM) 獲取完整手冊...</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-6 border-2 border-black/10 rounded">
+                                <h4 class="font-bold text-xl mb-2">✦ 學霸 (The Overachiever)</h4>
+                                <p class="text-sm opacity-70">雖然沒有魔法，但你的理論知識比誰都強。</p>
+                            </div>
+                            <div class="p-6 border-2 border-black/10 rounded">
+                                <h4 class="font-bold text-xl mb-2">✦ 運動健將 (The Athlete)</h4>
+                                <p class="text-sm opacity-70">用反射神經和肌肉來彌補魔法的不足。</p>
+                            </div>
+                            <div class="p-6 border-2 border-black/10 rounded">
+                                <h4 class="font-bold text-xl mb-2">✦ 社交達人 (The Socialite)</h4>
+                                <p class="text-sm opacity-70">只要話術夠好，沒人會發現你唸不出咒語。</p>
+                            </div>
+                            <div class="p-6 border-2 border-black/10 rounded">
+                                <h4 class="font-bold text-xl mb-2">✦ 幸運兒 (The Lucky One)</h4>
+                                <p class="text-sm opacity-70">純粹靠運氣混進來的，而且運氣通常還不錯。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 原本在入學須知的按鈕改到這裡 -->
+                    <div class="flex justify-center mt-20 pt-10 border-t-2 border-black/10">
+                        <button onclick="showPage('handbook')" class="magic-seal-btn serif">
+                            <i class="fas fa-scroll mr-3"></i> 打開新生入學手冊
+                        </button>
+                    </div>
+                </div>
+
+                <div class="wax-seal-bottom">
+                    <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&" alt="火漆印章" class="wax-seal-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁面：新生手冊 -->
+    <section id="page-handbook" class="page-content pt-28 pb-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="handbook-paper serif">
+                <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&" class="school-emblem-watermark">
+                
+                <div class="letter-content">
+                    <header class="mb-12 border-b-2 border-black/10 pb-8">
+                        <h2 class="text-5xl font-bold text-black/80 tracking-tight">新生入學手冊</h2>
+                        <p class="text-sm uppercase tracking-[0.4em] mt-4 font-bold opacity-40">Official Student Guidance / Smitherton Academy</p>
+                    </header>
+
+                    <div class="mb-16 relative pl-10">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-black/10"></div>
+                        <h3 class="text-3xl font-bold mb-8 flex items-center gap-3">致各位新生：</h3>
+                        <div class="space-y-6 text-xl leading-relaxed">
+                            <p>各位可能有著不同的背景與各自的目的，但你們每個人都處於相同的困境：沒有任何魔法能力，卻進入了一所超厲害魔法學院。</p>
+                            <p>總之因為一些原因，你們和彼此相遇，並共享這個驚天大秘密。你們將一同保守秘密、協力達成每個人的目標並守護彼此。</p>
+                            <p class="text-2xl font-black border-b-4 border-black/80 inline-block mt-4">記住，同伴之間的信任非常重要！</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-20">
+                        <div class="relative">
+                            <div class="text-2xl font-black mb-10 p-2 bg-black text-white px-6 inline-block">I. 先決條件</div>
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                                <div class="lg:col-span-5">
+                                    <h4 class="text-xl font-bold mb-6 flex items-center gap-2 underline underline-offset-8">A 學院設定</h4>
+                                    <p class="mb-6 text-min-limit opacity-80 italic font-bold">共同討論這所學院的樣貌，從以下擇一或自由創作：</p> 
+                                    <ul class="text-base space-y-4 pl-6 border-l-4 border-black/10">
+                                        <li>◆ 改造成寄宿貴族學院的大型莊園</li>
+                                        <li>◆ 學院坐落於屹立數百年的古老城堡</li>
+                                        <li>◆ 鬱鬱蔥蔥、彷若仙境的森林中，宿舍是樹屋，地底下有著錯綜複雜的通道</li>
+                                        <li>◆ 看似普通、實則暗藏玄機的大學校園</li>
+                                        <li>◆ 建在雲端、避開世俗窺探的雲中學院</li>
+                                    </ul>
+                                </div>
+                                <div class="lg:col-span-7 lg:border-l lg:border-black/5 lg:pl-12">
+                                    <h4 class="text-xl font-bold mb-6 flex items-center gap-2 underline underline-offset-8">B 學生們</h4>
+                                    <div class="space-y-6">
+                                        <p class="text-lg font-black bg-white/60 p-4 rounded-lg border border-black/5">建立你的角色，然後自我介紹。</p>
+                                        <p class="text-min-limit opacity-80 italic font-bold">自我介紹完後，請每位至少回答以下問題之一（不用所有的問題都要有答案，也可以很多人回答同一個問題）：</p>
+                                        <ul class="text-base space-y-3 pl-6 border-l-4 border-black/10">
+                                            <li>你們是如何相遇、相聚並組成這個團體的？</li>
+                                            <li>是誰在懷疑你們不屬於這裡？為什麼他們在懷疑？</li>
+                                            <li>你一直想給誰留下深刻印象？</li>
+                                            <li>你們到現在為止是怎麼蒙混過關完成課程作業的？</li>
+                                            <li>誰是你在團體之外信任的人，即使還不足以告訴他們你的秘密？</li>
+                                            <li>入學後，你對學校的哪個科目或領域非常著迷，但還沒有機會去探索？</li>
+                                            <li>你從高年級學長姐那裡聽到了什麼關於學校禁地的傳聞？</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-12 border-t-2 border-black/10">
+                            <div class="text-2xl font-black mb-10 p-2 bg-black text-white px-6 inline-block">II. 目前局勢</div>
+                            <div class="max-w-4xl">
+                                <h4 class="text-xl font-bold mb-6 underline underline-offset-8">面臨的挑戰</h4>
+                                <p class="mb-8 text-min-limit opacity-80 italic font-bold">雖然你們一直努力保持低調，但最近遇到的事情讓這這一切都變得很難。請選擇以下一項、擲骰選出一項，或自行創建一個。：</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 01</p>
+                                        <p class="text-base font-medium">你們決定要參加一個課外活動，當然是與魔法有關的。請描述是什麼樣的活動。</p>
+                                    </div>
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 02</p>
+                                        <p class="text-base font-medium">你們最近收到了一封匿名信，信中寫著他/他們知道你們的秘密。你們必須找出是誰寄來的，以及他/他們到底想要什麼。</p>
+                                    </div>
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 03</p>
+                                        <p class="text-base font-medium">同學們慫恿你們晚上偷偷溜出宿舍，到學院地牢偷東西，他們說這是所有學生都必須參加的儀式。並且當然，他們會跟著你們並確保你們真的有完成。</p>
+                                    </div>
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 04</p>
+                                        <p class="text-base font-medium">學院將舉辦一場盛宴，所有最受歡迎、最有影響力的學生都會出席。為了更加讓其他學生信服，你們勢必要讓他們留下深刻的印象，來鞏固自己的形象。</p>
+                                    </div>
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 05</p>
+                                        <p class="text-base font-medium">最近常在晚上聽到一些奇怪的聲響，總感覺是從學校某個被禁止出入的區域傳來的，而你們決定去一探究竟。</p>
+                                    </div>
+                                    <div class="p-6 bg-white/30 rounded-xl border-l-4 border-black/20 shadow-sm">
+                                        <p class="text-sm font-black opacity-30 mb-2">骰點 06</p>
+                                        <p class="text-base font-medium">本週是校友返校週，你們（和其他幾位同學）被選中代表學院參加一系列與對手學校的魔法競賽。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="mt-24 pt-10 border-t-2 border-black/10 text-center text-min-limit opacity-40 italic font-bold">
+                        史密瑟頓魔法學院教務處 謹製 / 願真理照亮爾等之路
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 其他佔位頁面 -->
+    <section id="page-moves" class="page-content pt-28 pb-12"><div class="text-center text-magic serif text-3xl">行動指南載入中...</div></section>
+    <section id="page-topsecret" class="page-content pt-28 pb-12"><div class="text-center text-red-500 serif text-3xl">院長室：機密檔案</div></section>
+
+    <footer class="py-16 bg-[#06201e] border-t border-teal-500/20 mt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="text-magic text-2xl font-bold mb-4 serif">你(不)是個巫師</div>
+            <p class="text-teal-200/40 text-min-limit uppercase tracking-widest">Original Creator: David Esarey | Art: Johanna Taylor</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-nav'));
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                const activeNav = document.getElementById('nav-' + pageId);
+                if (activeNav) activeNav.classList.add('active-nav');
+                window.scrollTo(0, 0);
+            }
+        }
+        window.onload = () => {
+            const hash = window.location.hash.replace('#', '');
+            showPage(hash || 'home');
+        };
+    </script>
+</body>
+</html>
