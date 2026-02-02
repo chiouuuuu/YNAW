@@ -151,7 +151,7 @@
             width: 100%;
             max-width: 850px;
             margin: 40px auto 0; 
-            min-height: 1150px; /* 增加容器高度以容納展開後的信件 */
+            min-height: 1150px; 
             perspective: 1000px;
             display: flex;
             flex-direction: column;
@@ -172,7 +172,7 @@
 
         .letter-paper {
             position: absolute;
-            top: 10px; /* 向上微調起始位置 */
+            top: 10px; 
             left: 0;
             right: 0;
             z-index: 5;
@@ -185,7 +185,7 @@
         .envelope-container:hover .letter-paper,
         .envelope-container.opened .letter-paper {
             opacity: 1;
-            transform: translateY(-20px) scale(1); /* 懸停時略微向上升起，避免與信封重疊過多 */
+            transform: translateY(-20px) scale(1);
             z-index: 15;
             pointer-events: auto;
         }
@@ -193,14 +193,14 @@
         .envelope-container:hover .envelope-img,
         .envelope-container.opened .envelope-img {
             z-index: 10;
-            transform: translateY(100px); /* 信封在開啟時向下移動，為信件騰出空間 */
+            transform: translateY(100px); 
         }
 
         /* 敘述段落樣式 */
         .story-section {
             width: 100%;
             max-width: 48rem; 
-            margin-top: 35px; /* 顯著增加信封與下方文字的間距，防止重疊 */
+            margin-top: 35px; 
             text-align: left;
             padding: 0 2rem;
             position: relative;
@@ -209,10 +209,9 @@
         }
         
         .envelope-container.opened .story-section {
-            transform: translateY(120px); /* 信件打開時，文字進一步推開 */
+            transform: translateY(120px); 
         }
 
-        /* 逐行淡入動畫 */
         .fade-in-text {
             opacity: 0;
             transform: translateY(10px);
@@ -252,28 +251,12 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* 信件內部的正式排版增強 */
         .letter-border {
             border: 1px solid rgba(0,0,0,0.1);
             padding: 2.5rem;
             position: relative;
         }
         
-        .letter-header-logo {
-            display: block;
-            margin: 0 auto 1.5rem;
-            width: 80px;
-            height: auto;
-            filter: grayscale(1) opacity(0.8);
-        }
-
-        .letter-date {
-            text-align: right;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            color: #444;
-        }
-
         .letter-salutation {
             font-weight: 700;
             font-size: 1.2rem;
@@ -291,14 +274,6 @@
         .letter-footer-signature {
             margin-top: 3rem;
             text-align: right;
-        }
-
-        .letter-seal-mini {
-            position: absolute;
-            top: 2rem;
-            right: 2.5rem;
-            width: 60px;
-            opacity: 0.3;
         }
 
     </style>
@@ -329,10 +304,8 @@
             <p class="text-xl text-white/60 italic mb-16">You're (Not) A Wizard</p>
             
             <div id="envelope-wrapper" class="envelope-container" onmouseenter="openEnvelope()">
-                <!-- 信封圖片 -->
                 <img src="https://cdn.discordapp.com/attachments/1084878050350612602/1467859721854648351/unnamed.png?ex=6981ea65&is=698098e5&hm=c81557a716a55a3a59fac768b702dd83f56dee805010ecffebdbdf944bfcb58c&" class="envelope-img" alt="魔法信封">
                 
-                <!-- 信件內容 (正式排版) -->
                 <div class="letter-paper">
                     <div class="document-paper serif text-left">
                         <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
@@ -369,7 +342,6 @@
                     </div>
                 </div>
 
-                <!-- 敘述段落 -->
                 <div class="story-section">
                     <h3 class="text-magic font-bold text-3xl mb-8 serif italic text-center fade-in-text stagger-1">但，這一定是出了什麼問題...</h3>
                     <p class="text-xl leading-relaxed text-white/90 mb-6 font-medium fade-in-text stagger-2">因為，你根本！完全！連一丁點魔法都不會！</p>
@@ -426,7 +398,6 @@
                         </div>
                     </div>
 
-                    <!-- 安全工具 -->
                     <div class="mb-12 p-8 border-2 border-dashed border-black/20 bg-white/40">
                         <div class="flex items-center mb-4">
                             <h3 class="font-black text-xl uppercase">安全工具 (Safety Tools)</h3>
@@ -449,7 +420,7 @@
 
                     <div class="flex justify-between items-center mt-20 pt-10 border-t-2 border-black/10">
                         <div class="text-min-limit font-bold opacity-40 uppercase tracking-widest">
-                            © Smitherton Academy Registrar
+                            © Smitherton Academy
                         </div>
                         <div class="text-center">
                             <button onclick="showPage('playbooks')" class="magic-roster-btn serif">
@@ -462,76 +433,214 @@
         </div>
     </section>
 
-    <!-- 頁面：入學新生 -->
+    <!-- 頁面：入學新生 (更新排版與翻譯) -->
     <section id="page-playbooks" class="page-content pt-28 pb-32">
         <div class="max-w-5xl mx-auto px-6">
             <div class="document-paper serif">
                 <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="school-emblem-watermark">
                 
                 <div class="letter-content">
-                    <div class="official-header">
-                        <h1 class="text-3xl font-black tracking-widest">入學新生名冊</h1>
-                        <p class="text-sm uppercase tracking-widest font-bold opacity-60">STUDENT ROSTER & CHARACTER CREATION</p>
-                    </div>
-
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">角色創建 (Character Creation)</h2>
-                        <ul class="space-y-4 text-lg">
-                            <li class="flex gap-4">
-                                <span class="font-bold">1.</span>
-                                <div><b>選擇扮演書：</b> 每位玩家應選擇不同的扮演書。</div>
-                            </li>
-                            <li class="flex gap-4">
-                                <span class="font-bold">2.</span>
-                                <div>
-                                    <b>分配能力值 (Assign your stats)：</b> 將 +2, +1, -1 分配給以下三種能力：
-                                    <ul class="mt-4 space-y-3 pl-6 border-l-2 border-black/10">
-                                        <li><b class="text-xl">Brains (腦力)</b> - 代表知識儲備以及解決問題的能力。</li>
-                                        <li><b class="text-xl">Brawn (體魄)</b> - 代表基本身體素質，包括力量和速度。</li>
-                                        <li><b class="text-xl">Bravado (氣場)</b> - 代表個性影響力以及說服或欺騙他人的能力。</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="flex gap-4">
-                                <span class="font-bold">3.</span>
-                                <div>接著為你的角色取一個名字、設定代名詞、進行簡短的描述，以及設定一至兩個性格特徵（在遊戲過程中逐步塑造角色性格也是OK的！）。</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-16">
-                        <h2 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">扮演書</h2>
-                        <p class="text-lg opacity-80 mb-10 italic">劇本詳細內容載入中，請諮詢學院院長 (DM) 獲取完整手冊...</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="p-6 border-2 border-black/10 rounded">
-                                <h4 class="font-bold text-xl mb-2">✦ 學霸 (The Overachiever)</h4>
-                                <p class="text-sm opacity-70">雖然沒有魔法，但你的理論知識比誰都強。</p>
-                            </div>
-                            <div class="p-6 border-2 border-black/10 rounded">
-                                <h4 class="font-bold text-xl mb-2">✦ 運動健將 (The Athlete)</h4>
-                                <p class="text-sm opacity-70">用反射神經和肌肉來彌補魔法的不足。</p>
-                            </div>
-                            <div class="p-6 border-2 border-black/10 rounded">
-                                <h4 class="font-bold text-xl mb-2">✦ 社交達人 (The Socialite)</h4>
-                                <p class="text-sm opacity-70">只要話術夠好，沒人會發現你唸不出咒語。</p>
-                            </div>
-                            <div class="p-6 border-2 border-black/10 rounded">
-                                <h4 class="font-bold text-xl mb-2">✦ 幸運兒 (The Lucky One)</h4>
-                                <p class="text-sm opacity-70">純粹靠運氣混進來的，而且運氣通常還不錯。</p>
+                    <div class="official-header flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713290240112/unnamed.png?ex=69815cd3&is=69800b53&hm=6dc8bdf79fdbc91c8de09982cfbdfec64637fc64554a15cfa849e8149759ded3&=&format=webp&quality=lossless&width=1175&height=1175" class="w-16 h-16 mr-4 grayscale opacity-80">
+                            <div>
+                                <h1 class="text-3xl font-black tracking-widest">入學新生名冊</h1>
+                                <p class="text-sm uppercase tracking-widest font-bold opacity-60">STUDENT ROSTER & CHARACTER CREATION</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-center mt-20 pt-10 border-t-2 border-black/10">
-                        <button onclick="showPage('handbook')" class="magic-seal-btn serif">
-                            <i class="fas fa-scroll mr-3"></i> 打開新生入學手冊
-                        </button>
-                    </div>
-                </div>
+                    <h2 class="text-4xl font-black text-center mt-8 mb-12 tracking-tighter">角色創建</h2>
 
-                <div class="wax-seal-bottom">
-                    <img src="https://media.discordapp.net/attachments/1084878050350612602/1467707713764200490/unnamed_1.png?ex=69815cd3&is=69800b53&hm=593dd2959e88cd3a6836eef896ff515b7d0b2bc468620f712f10c7ca4e30e0e1&=&format=webp&quality=lossless&width=1175&height=1175" alt="火漆印章" class="wax-seal-img">
+                    <div class="mb-12">
+                        <h4 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">創建步驟</h4>
+                        <div class="space-y-8 mt-4">
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center font-black flex-shrink-0">1</div>
+                                <div class="text-lg">
+                                    <p class="font-bold mb-1">選擇扮演書：</p>
+                                    <p class="opacity-80">每位玩家應選擇不同的扮演書。扮演書定義了你角色的特長與隱瞞身份的方式。</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center font-black flex-shrink-0">2</div>
+                                <div class="text-lg flex-grow">
+                                    <p class="font-bold mb-1">分配能力值 (Assign your stats)：</p>
+                                    <p class="opacity-80 mb-4">將 <span class="bg-black text-white px-2 py-0.5">+2</span>, <span class="bg-black text-white px-2 py-0.5">+1</span>, <span class="bg-black text-white px-2 py-0.5">-1</span> 分配給以下三種能力：</p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-4 border-2 border-black/5 bg-white/40">
+                                            <b class="text-xl block mb-2 underline">Brains (腦力)</b>
+                                            <p class="text-min-limit leading-snug opacity-80">代表知識儲備以及解決問題的能力。</p>
+                                        </div>
+                                        <div class="p-4 border-2 border-black/5 bg-white/40">
+                                            <b class="text-xl block mb-2 underline">Brawn (體魄)</b>
+                                            <p class="text-min-limit leading-snug opacity-80">代表基本身體素質，包括力量和速度。</p>
+                                        </div>
+                                        <div class="p-4 border-2 border-black/5 bg-white/40">
+                                            <b class="text-xl block mb-2 underline">Bravado (氣場)</b>
+                                            <p class="text-min-limit leading-snug opacity-80">代表個性影響力以及說服或欺騙他人的能力。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6 items-start">
+                                <div class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center font-black flex-shrink-0">3</div>
+                                <div class="text-lg">
+                                    <p class="font-bold mb-1">角色細節：</p>
+                                    <p class="opacity-80">接著為你的角色取一個名字、設定代名詞、進行簡短的描述，以及設定一至兩個性格特徵（在遊戲過程中逐步塑造角色性格也是OK的！）。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-16">
+                        <h4 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">扮演書 (Playbooks)</h4>
+                        
+                        <div class="space-y-12">
+                            <!-- 扮演書 1 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-crown text-gray-700"></i> 名門之後 (The Legacy)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">你的整個家族都極具魔法天賦，而你正努力傳承這一傳統。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
+                                        <p class="mb-4"><b>良好信譽 (Good Standing)：</b>你遊戲開始時擁有 4 個學分（Credits）而非 3 個，且 4 個是你的學分上限。</p>
+                                        <p><b>家族之名 (The Family Name)：</b>你的名字在這裡頗具影響力。在使用「氣場 (Bravado)」進行行動擲骰前，你可以消耗 1 個學分來直接宣告成功。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 扮演書 2 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-hat-wizard text-gray-700"></i> 魔術助手 (The Stagehand)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">舞台魔術流淌在你的血液中。無論你的父母是表演搭檔，還是這門手藝傳承已久，你都決心尋找真正的魔法來為表演增色。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
+                                        <p><b>行內工具 (Tools of the Trade)：</b>你可以使用舞台魔術師依賴的各種設備（雙層底容器、隱蔽的口袋、便攜式煙霧機等）。當你使用「氣場 (Bravado)」進行行動時，可以宣告你正在使用的工具。若你這麼做，擲一顆額外的骰子並忽略最低的那顆。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 扮演書 3 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-paw text-gray-700"></i> 狼人眷顧者 (The Were-Touched)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">你曾被狼人或類似的超自然生物咬傷，現在你正在尋找移除（或至少控制）你詛咒的方法。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
+                                        <p class="mb-4"><b>野性本能 (Animal Instincts)：</b>必要時你可以開發野性的一面來震懾周圍的人。當你進行使用「體魄 (Brawn)」的行動時，可以選擇在該擲骰中獲得 +2 加成。（你必須在擲骰前做出選擇。注意，其他角色可能會被這種兇殘的表現所驚嚇。）</p>
+                                        <p><b>獸群獵手 (Pack Hunter)：</b>當另一位玩家進行擲骰時你可以幫助他們，為其擲骰提供 +1 加成。你應該描述你如何幫助他們。（你可以在群體檢定中使用此能力，但僅限幫助一名其他玩家。）當另一位玩家正在使用其特殊能力時，你不能使用此行動。你必須在擲骰前決定使用此能力。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 扮演書 4 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-shield-alt text-gray-700"></i> 守護者 (The Protector)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">如果只有你自己，你第一天就離開這了。但你發現了像你一樣的人，你絕不會讓他們獨自面對這個地方。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
+                                        <p class="mb-4"><b>團隊成員 (Team Player)：</b>你遊戲開始時擁有 4 個學分而非 3 個，且 4 個是你的學分上限。</p>
+                                        <p><b>守護靈魂 (Protective Spirit)：</b>當你在失敗中介入（Interpose）時，進行一次擲骰並加上你的「體魄 (Brawn)」。擲出 7+ 則你不會失去學分。（你不能在此擲骰中取回失去的學分。）與其他介入行動一樣，結果仍是失敗被轉移到你身上。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 扮演書 5 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-book-reader text-gray-700"></i> 優等生 (The Straight-A Student)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">學校就是學校，你不甘於排在班級前段之外。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
+                                        <p><b>博覽群書 (Well-Read)：</b>你讀過的書多到即使不知道答案時，聽起來也頗具說服力。每當你進行使用「腦力 (Brains)」的行動時，失敗不會讓你失去學分（但失敗的其他後果仍會發生）。此外，當你使用「腦力 (Brains)」時，任何部分成功（7-9）對你而言都視為完全成功。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 扮演書 6 -->
+                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
+                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-vial text-gray-700"></i> 執著之人 (The Determined)</h4>
+                                <p class="italic text-lg mb-6 opacity-75">無論是否有先天的力量，你都要找到一種讓魔法為你所用的方法。</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                                    <div>
+                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
+                                        <ul class="list-disc list-inside opacity-80">
+                                            <li>Brains (腦力)</li>
+                                            <li>Brawn (體魄)</li>
+                                            <li>Bravado (氣場)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-black/5 p-4 rounded">
+                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
+                                        <p class="mb-4"><b>土製方案 (Home-Brewed Solution)：</b>你一直在煉金實驗室裡做實驗，並且認為你可能發現了些什麼。問題在於，你還沒有機會測試它。你擁有三份這種不穩定的藥劑。每當你進行行動時，你可以選擇飲用一份而非進行擲骰。擲一顆 d6 骰來決定結果：</p>
+                                        <ul class="space-y-1">
+                                            <li><b>1：毫無反應。</b>你失敗了。失去 1 個學分。</li>
+                                            <li><b>2-3：部分成功，</b>並伴隨複雜情況。</li>
+                                            <li><b>4-5：它奏效了...</b>算是吧。你成功了但不能取回學分。</li>
+                                            <li><b>6：這是什麼巫術？</b>你複製了一個簡單的法術效果。你成功了且學分回滿至 3 個。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-20 pt-10 border-t-2 border-black/10">
+                        <div class="text-min-limit font-bold opacity-40 uppercase tracking-widest">
+                            Official Roster Document
+                        </div>
+                        <div class="text-center">
+                            <button onclick="showPage('handbook')" class="magic-roster-btn serif">
+                                <i class="fas fa-scroll mr-3"></i> 打開新生入學手冊
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -659,7 +768,6 @@
             }
         }
 
-        // 開啟信封動畫
         let isOpened = false;
         function openEnvelope() {
             if (isOpened) return;
@@ -667,7 +775,6 @@
             const wrapper = document.getElementById('envelope-wrapper');
             wrapper.classList.add('opened');
             
-            // 觸發文字淡入
             setTimeout(() => {
                 const textElements = document.querySelectorAll('.fade-in-text');
                 textElements.forEach(el => el.classList.add('visible'));
