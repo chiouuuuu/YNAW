@@ -499,132 +499,149 @@
                     <div class="mt-16">
                         <h4 class="text-2xl font-black mb-6 inline-block border-b-4 border-black">扮演書</h4>
                         
-                        <div class="space-y-12">
-                            <!-- 扮演書 1 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-crown text-gray-700"></i> 名門之後 (The Legacy)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">你的整個家族都極具魔法天賦，而你正努力傳承這一傳統。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <div class="space-y-16">
+                        <!-- 扮演書 1：傳承者 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[傳承者 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">名門之後</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Legacy</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">你的整個家族都極具魔法天賦，而你正試圖延續這個基業。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
-                                        <p class="mb-4"><b>良好信譽 (Good Standing)：</b>你遊戲開始時擁有 4 個學分（Credits）而非 3 個，且 4 個是你的學分上限。</p>
-                                        <p><b>家族之名 (The Family Name)：</b>你的名字在這裡頗具影響力。在使用「氣場 (Bravado)」進行行動擲骰前，你可以消耗 1 個學分來直接宣告成功。</p>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>良好聲望 (Good Standing)：</b><br>遊戲開始時你有 4 點信用（而不是 3 點），且 4 點是你的信用值上限。</p>
+                                            <p class="text-min-limit"><b>家族名望 (The Family Name)：</b><br>你的姓氏在這裡頗具影響力。在進行一項使用氣場的行動前，可以花費 1 點信用使該行動自動成功。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 扮演書 2 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-hat-wizard text-gray-700"></i> 魔術助手 (The Stagehand)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">舞台魔術流淌在你的血液中。無論你的父母是表演搭檔，還是這門手藝傳承已久，你都決心尋找真正的魔法來為表演增色。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <!-- 扮演書 2：舞台助理 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[舞台助理 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">舞台助手</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Stagehand</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">舞台魔術對你來說就像是呼吸一樣自然。無論你的父母是表演雙人組，還是這種表演手腕可以追溯到更久遠的過去，你都下定決心要找到一些真正的魔法，來為你的表演增色。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
-                                        <p><b>行內工具 (Tools of the Trade)：</b>你可以使用舞台魔術師依賴的各種設備（雙層底容器、隱蔽的口袋、便攜式煙霧機等）。當你使用「氣場 (Bravado)」進行行動時，可以宣告你正在使用的工具。若你這麼做，擲一顆額外的骰子並忽略最低的那顆。</p>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>舞台行頭 (Tools of the Trade)：</b><br>你可以使用舞台魔術師常用的各種行頭（如假底的容器、隱藏口袋、便攜式煙霧機等）。在進行一項使用氣場的行動前，你可以宣告你正在使用哪種工具，並額外投擲一顆骰子並忽略所有骰子中點數最低的數值。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 扮演書 3 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-paw text-gray-700"></i> 狼人眷顧者 (The Were-Touched)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">你曾被狼人或類似的超自然生物咬傷，現在你正在尋找移除（或至少控制）你詛咒的方法。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <!-- 扮演書 3：獸語者 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[獸語者 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">感染者</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Were-Touched</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">你曾被狼人或類似的超自然生物咬傷，現在你正在尋求解除或控制詛咒的方法。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
-                                        <p class="mb-4"><b>野性本能 (Animal Instincts)：</b>必要時你可以開發野性的一面來震懾周圍的人。當你進行使用「體魄 (Brawn)」的行動時，可以選擇在該擲骰中獲得 +2 加成。（你必須在擲骰前做出選擇。注意，其他角色可能會被這種兇殘的表現所驚嚇。）</p>
-                                        <p><b>獸群獵手 (Pack Hunter)：</b>當另一位玩家進行擲骰時你可以幫助他們，為其擲骰提供 +1 加成。你應該描述你如何幫助他們。（你可以在群體檢定中使用此能力，但僅限幫助一名其他玩家。）當另一位玩家正在使用其特殊能力時，你不能使用此行動。你必須在擲骰前決定使用此能力。</p>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>野性本能 (Animal Instincts)：</b><br>必要時你可以展現野性的一面來震懾周圍的人。在進行一項使用體魄的行動前宣告使用，可在該次擲骰獲得 +2 。（注意，其他人可能會被你凶猛的行為嚇到。）</p>
+                                            <p class="text-min-limit"><b>群體狩獵 (Pack Hunter)：</b><br>當另一名玩家進行擲骰前，你可以宣告要幫助他們，並說明是如何幫助的，這會為為該次擲骰提供 +1 的加值。但當另一名玩家正在使用其特殊能力時，你不能使用此能力。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 扮演書 4 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-shield-alt text-gray-700"></i> 守護者 (The Protector)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">如果只有你自己，你第一天就離開這了。但你發現了像你一樣的人，你絕不會讓他們獨自面對這個地方。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <!-- 扮演書 4：守護者 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[守護者 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">守護者</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Protector</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">如果只有你自己，你第一天就會離開這所學院。但你發現了其他像你一樣的人，且你絕不打算讓他們獨自面對這裡的一切。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Abilities)：</p>
-                                        <p class="mb-4"><b>團隊成員 (Team Player)：</b>你遊戲開始時擁有 4 個學分而非 3 個，且 4 個是你的學分上限。</p>
-                                        <p><b>守護靈魂 (Protective Spirit)：</b>當你在失敗中介入（Interpose）時，進行一次擲骰並加上你的「體魄 (Brawn)」。擲出 7+ 則你不會失去學分。（你不能在此擲骰中取回失去的學分。）與其他介入行動一樣，結果仍是失敗被轉移到你身上。</p>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>團隊成員 (Team Player)：</b><br>遊戲開始時你有 4 點信用（而不是 3 點），且 4 點是你的信用值上限。</p>
+                                            <p class="text-min-limit"><b>守護精神 (Protective Spirit)：</b><br>當你在他人擲骰失敗時試圖介入，進行一次擲骰並加上你的體魄值，若結果為 7+，你不會失去 1 點信用（此次擲骰不能回復失去的信用點），但後果仍會被轉移至你身上。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 扮演書 5 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-book-reader text-gray-700"></i> 優等生 (The Straight-A Student)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">學校就是學校，你不甘於排在班級前段之外。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <!-- 扮演書 5：全優生 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[全優生 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">優等生</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Straight-A Student</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">學校就是學校，不管它到底是教魔法還是教其他的，你都絕不滿足於全班第一以外的任何成績。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
-                                        <p><b>博覽群書 (Well-Read)：</b>你讀過的書多到即使不知道答案時，聽起來也頗具說服力。每當你進行使用「腦力 (Brains)」的行動時，失敗不會讓你失去學分（但失敗的其他後果仍會發生）。此外，當你使用「腦力 (Brains)」時，任何部分成功（7-9）對你而言都視為完全成功。</p>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>博覽群書 (Well-Read)：</b><br>即使你不知道問題的答案，也能依靠過往的書中知識，說的頭頭是道。每當你進行使用智識的行動時，失敗不會讓你失去信用點（失敗的其他效果仍會發生）；部分成功 (7-9) 則皆視為完全成功。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 扮演書 6 -->
-                            <div class="p-8 border-2 border-black/10 bg-white/30 rounded-lg">
-                                <h4 class="font-black text-2xl mb-2 flex items-center gap-3"><i class="fas fa-vial text-gray-700"></i> 執著之人 (The Determined)</h4>
-                                <p class="italic text-lg mb-6 opacity-75">無論是否有先天的力量，你都要找到一種讓魔法為你所用的方法。</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-min-limit">
+                        <!-- 扮演書 6：意志堅定者 -->
+                        <div class="group border-2 border-black/10 p-1 bg-white/40">
+                            <div class="border border-black/5 p-8 flex flex-col md:flex-row gap-8">
+                                <div class="w-full md:w-1/3">
+                                    <div class="playbook-img-placeholder">[意志堅定者 角色圖片]</div>
+                                    <h3 class="text-2xl font-black text-center">實驗狂人</h3>
+                                    <p class="text-xs text-center uppercase tracking-widest opacity-50 mt-1">The Determined</p>
+                                </div>
+                                <div class="w-full md:w-2/3 space-y-6">
                                     <div>
-                                        <p class="font-bold border-b border-black/10 mb-2">能力分配 (+2, +1, -1)：</p>
-                                        <ul class="list-disc list-inside opacity-80">
-                                            <li>Brains (腦力)</li>
-                                            <li>Brawn (體魄)</li>
-                                            <li>Bravado (氣場)</li>
-                                        </ul>
+                                        <h4 class="font-bold border-b-2 border-black mb-2 inline-block">扮演書說明</h4>
+                                        <p class="italic text-lg">無論那是與生俱來的力量還是怎樣，你都會找到一種讓魔法為你所用的方法。</p>
                                     </div>
-                                    <div class="bg-black/5 p-4 rounded">
-                                        <p class="font-bold mb-2">特殊能力 (Special Ability)：</p>
-                                        <p class="mb-4"><b>土製方案 (Home-Brewed Solution)：</b>你一直在煉金實驗室裡做實驗，並且認為你可能發現了些什麼。問題在於，你還沒有機會測試它。你擁有三份這種不穩定的藥劑。每當你進行行動時，你可以選擇飲用一份而非進行擲骰。擲一顆 d6 骰來決定結果：</p>
-                                        <ul class="space-y-1">
-                                            <li><b>1：毫無反應。</b>你失敗了。失去 1 個學分。</li>
-                                            <li><b>2-3：部分成功，</b>並伴隨複雜情況。</li>
-                                            <li><b>4-5：它奏效了...</b>算是吧。你成功了但不能取回學分。</li>
-                                            <li><b>6：這是什麼巫術？</b>你複製了一個簡單的法術效果。你成功了且學分回滿至 3 個。</li>
-                                        </ul>
+                                    <div>
+                                        <h4 class="font-bold border-b-2 border-black mb-3">特殊能力</h4>
+                                        <div class="space-y-4">
+                                            <p class="text-min-limit"><b>自製溶液 (Home-Brewed Solution)：</b><br>你埋首於煉金實驗室做實驗，且認為自己可能有了新發現，可惜的是，你還沒有機會進行測試。你有三份這種不穩定的藥劑，每當你進行行動時，你可以選擇飲用一份藥劑代替擲骰，並擲一顆 d6 來決定行動的結果：</p>
+                                            <ul class="text-[12px] space-y-1 mt-2 pl-4 border-l-2 border-black/10 font-bold">
+                                                <li>  1: 什麼也沒發生。行動失敗了。失去 1 點信用值。</li>
+                                                <li>2-3: 部分成功。引發了一些併發症。</li>
+                                                <li>4-5: 應該算是有效吧。行動成功了但無法回復信用點。</li>
+                                                <li>  6: 真是太神奇了！你成功複製了一個簡單的法術。行動成功了，且信用值回升至 3 點。</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -683,7 +700,7 @@
                                     <span class="w-8 h-8 bg-black text-white flex items-center justify-center text-sm">A</span>
                                     學院設定
                                 </h5>
-                                <p class="text-min-limit opacity-70 italic font-bold mb-4">共同討論這所學院的樣貌，從以下擇一或自由創作：</p>
+                                <p class="text-min-limit opacity-70 font-bold mb-4">共同討論這所學院的樣貌，從以下擇一或自由創作：</p>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
                                     <div class="flex items-start gap-3 text-min-limit"><i class="fas fa-check mt-1 text-xs"></i> <span>改造成寄宿貴族學院的大型莊園</span></div>
                                     <div class="flex items-start gap-3 text-min-limit"><i class="fas fa-check mt-1 text-xs"></i> <span>學院坐落於屹立數百年的古老城堡</span></div>
@@ -699,11 +716,11 @@
                                     <span class="w-8 h-8 bg-black text-white flex items-center justify-center text-sm">B</span>
                                     學生們
                                 </h5>
-                                <p class="text-min-limit opacity-70 italic font-bold mb-4">建立你的角色，然後自我介紹。自我介紹完後，請每位至少回答以下問題之一（不用所有的問題都要有答案，也可以很多人回答同一個問題）：</p>
+                                <p class="text-min-limit opacity-70 font-bold mb-4">建立你的角色，然後自我介紹。自我介紹完後，請每位至少回答以下問題之一（不用所有的問題都要有答案，也可以很多人回答同一個問題）：</p>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                                     <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">你們是如何相遇、相聚並組成這個團體的？</p>
-                                    <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">是誰在懷疑你們不屬於這所魔法學院？為什麼他們在懷疑？</p>
                                     <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">你一直想給誰留下深刻印象？</p>
+                                    <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">是誰在懷疑你們不屬於這所魔法學院？為什麼他們在懷疑？</p>
                                     <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">你們到現在為止是怎麼蒙混過關完成課程作業的？</p>
                                     <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">誰是你在團體之外信任的人，雖然你還無法把自己的秘密向他揭露？</p>
                                     <p class="text-min-limit border-l-2 border-black/10 pl-4 py-1">入學後，你對學校的哪個科目或領域非常著迷，但還沒有機會去探索？</p>
