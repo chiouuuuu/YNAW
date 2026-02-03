@@ -312,10 +312,40 @@
             padding-bottom: 1rem;
         }
 
-        .map-move-card {
-            border-left: 4px solid var(--map-red);
-            padding-left: 1rem;
+        /* 特別設計的魔法暗語卡片樣式 */
+        .special-move-card {
+            position: relative;
+            border: 2px solid var(--map-ink);
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
+            overflow: hidden;
+            background: white;
+            box-shadow: 4px 4px 0px var(--map-ink);
+        }
+
+        .move-bg-stat {
+            position: absolute;
+            right: -10px;
+            bottom: -20px;
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(139, 38, 38, 0.08); /* 淺色 */
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .move-header {
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px solid var(--map-ink);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .move-content {
+            position: relative;
+            z-index: 2;
         }
 
         .die-result {
@@ -325,7 +355,6 @@
             display: inline-block;
         }
 
-        .text-ink { color: var(--map-ink); }
         .text-map-red { color: var(--map-red); }
 
     </style>
@@ -343,7 +372,7 @@
                 <button id="nav-orientation" onclick="showPage('orientation')" class="nav-btn hover:text-magic transition">入學須知</button>
                 <button id="nav-playbooks" onclick="showPage('playbooks')" class="nav-btn hover:text-magic transition">新生名冊</button>
                 <button id="nav-handbook" onclick="showPage('handbook')" class="nav-btn hover:text-magic transition">新生手冊</button>
-                <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">如何進行行動</button>
+                <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">行動指南</button>
                 <button id="nav-topsecret" onclick="showPage('topsecret')" class="nav-btn text-red-400 hover:text-red-300 transition">魔法學院院長機密手冊</button>
             </div>
         </div>
@@ -937,143 +966,367 @@
         </div>
     </section>
 
-    <!-- 如何進行行動 (劫盜地圖風格) -->
+    <!-- 行動指南 (劫盜地圖風格) -->
     <section id="page-moves" class="page-content pt-28 pb-28">
     <div class="max-w-4xl mx-auto px-6"> <div class="map-container serif">
             <div class="map-paper p-8 md:p-12"> <div class="map-header mb-10">
-                    <h2 class="map-title serif text-3xl font-black text-[var(--map-red)]">如何進行行動</h2>
-                    <p class="map-subtitle uppercase tracking-widest text-lg font-semibold opacity-80">How to make your moves</p>
+                    <h2 class="map-title serif text-3xl font-black text-[var(--map-red)]">行動指南</h2>
+                    <p class="map-subtitle uppercase tracking-widest text-lg font-semibold opacity-80">Making a Move</p>
                 </div>
-
-                <div class="map-section-box mb-8">
-                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">Credits 信用點</h3>
-                    <p class="text-sm leading-relaxed mb-4 text-[var(--map-ink)]">
-                        每位玩家在遊戲開始時擁有 3 點信用點。這是你在遊戲中的貨幣，代表了周圍的人如何看待你。除非你的劇本另有規定，否則信用點上限為 3 點。
-                    </p>
-                    <p class="text-sm font-bold text-[var(--map-red)] leading-relaxed bg-[var(--map-red)]/5 p-3 border-l-4 border-[var(--map-red)]">
-                        如果你用光了信用點，你就失去了所有的公信力，有人發現了你不屬於這所學校！如果發生這種情況，你的角色會被開除。這相當於其他遊戲中的角色死亡。
-                    </p>
-                </div>
-
+                
                 <!-- 進行行動說明 -->
                 <div class="map-section-box mb-8">
-                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">Making a Move 進行行動</h3>
+                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">行動</h3>
                     <p class="text-sm leading-relaxed mb-4 text-[var(--map-ink)]">
-                        每當學生嘗試進行具有失敗風險的事情時，該玩家就會觸發一個「行動」。行動旨在為故事中出現的敘事挑戰提供機械性的解決方案。當你達到這個階段時，主持人（DM）會告訴你正在使用的是哪種行動，然後你將擲出兩個六面骰（2d6）。將兩個骰子的總和加上該行動相關能力的修正值。
+                        每當你嘗試進行可能會失敗的事情時，就會觸發一個「動作 Move」。
+                    <p>動作的目的是為故事中出現的挑戰，提供規則面上的解方。在適當時機時，遊戲主持人（DM）會告訴你當下正在使用哪種動作，接著你需要進行 2D6 的檢定，<b>兩個骰子的數字總和 + 該動作相關屬性的修正值，便是最終值</b>。</p>
                     </p>
                     <div class="space-y-3 mt-4">
                         <div class="flex items-start">
-                            <span class="die-result bg-[var(--map-ink)] text-white px-2 py-0.5 rounded mr-2">10+</span>
-                            <span class="text-sm text-[var(--map-ink)]"><b>完全成功</b>。你重新獲得 1 點信用點。</span>
+                            <span class="die-result">10+</span>
+                            <span class="text-sm text-ink"><b>完全成功</b>。恢復 1 點信用。</span>
                         </div>
                         <div class="flex items-start">
                             <span class="die-result">7-9</span>
-                            <span class="text-sm text-ink"><b>部分成功</b>。你成功了，但會引入一個新的併發症。</span>
+                            <span class="text-sm text-ink"><b>部分成功</b>。你成功了，但會面臨新的難題。</span>
                         </div>
                         <div class="flex items-start">
-                            <span class="die-result text-ink">6-</span>
-                            <span class="text-sm text-ink"><b class="text-map-red">失敗</b>。你嘗試的事情失敗了，且處境變得更糟。你失去 1 點信用點。</span>
+                            <span class="die-result">6-</span>
+                            <span class="text-sm text-ink"><b>失敗</b>。你嘗試的事情失敗了，且處境變得更糟。失去 1 點信用點。</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- 舉例說明 -->
                 <div class="p-4 bg-black/5 border border-dashed border-[var(--map-ink)] mb-10">
-                    <h4 class="text-xs font-black uppercase tracking-widest mb-2 opacity-60 text-ink">範例記錄 Example</h4>
+                    <h4 class="text-xs font-black uppercase tracking-widest mb-2 opacity-60 text-ink">舉例</h4>
                     <p class="text-xs italic leading-relaxed text-ink">
-                        莉莎的角色正嘗試說服一名同學代寫作業。DM 指示她進行「魔法暗語」行動。她擲出 2d6 並得到 2 和 5。由於該行動使用「勇氣」，她加上了 +1 的勇氣修正值，總分為 8。由於這是帶有併發症的成功，DM 描述該同學同意代寫作業，但要求一些昂貴或危險的回報作為保密費。
+                        莉莎的角色正嘗試說服一名同學幫她代寫作業。DM 指示她進行「XXXX」動作。她擲出 2 和 5 並加上該行動的屬性--勇氣的調整值 +1 ，總計為 8，為部份成功。DM 描述該同學同意代寫作業，但要求一些昂貴或危險的回報當作封口費。
+                    </p>
+                </div>
+                
+                <!-- 信用點說明 -->
+                <div class="map-section-box mb-8">
+                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">Credits 信用點</h3>
+                    <p class="text-sm leading-relaxed mb-4 text-[var(--map-ink)]">
+                        每個人在校園生活開始時都會擁有 3 點信用點。信用點是一種資源，代表了周圍的人如何看待你。信用點上限為 3 點，若扮演書有調整值則不在此限。
+                    </p>
+                    <p class="text-sm font-bold text-[var(--map-red)] leading-relaxed bg-[var(--map-red)]/5 p-3 border-l-4 border-[var(--map-red)]">
+                        如果信用點用光了，將會有人發現你其實不會使用魔法、不屬於這所學院，接著你便會被學院開除。
                     </p>
                 </div>
 
+
+
                 <!-- 標準行動 -->
-                <h3 class="text-2xl font-black text-[var(--map-red)] mb-6 text-center italic tracking-tight underline">Standard Moves 標準行動</h3>
+                <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">一般動作</h3>
+                <p class="text-sm italic font-light text-center md:text-left uppercase tracking-widest opacity-50 mt-1">
+                    Standard Moves
+                </p>  
+                <p class="text-sm font-light text-center md:text-left uppercase tracking-widest opacity-50 mt-1">
+                    以下是一些可以自由使用的動作。如果當下的行為難以判定是何種動作，將由主持人決定最適合的動作。主持人可依當下情況，彈性調整動作的結果。
+                </p>                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">魔法暗語 (勇氣)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Persuade / Smooth talk</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 成功說服！獲得 1 點信用。</li>
-                            <li><span class="die-result">7-9</span> 他們同意，但要求回報。</li>
-                            <li><span class="die-result text-ink">6-</span> 看穿了你。失去 1 點。</li>
-                        </ul>
+
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">障眼法 (勇氣)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Sleight of hand / Trickery</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 毫不知情！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 分散了注意，但起了疑。</li>
-                            <li><span class="die-result text-ink">6-</span> 騙不到他們。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">現在你看到我了 (體力)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Hide</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 無人知曉。獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 藏好了，但犧牲了別人。</li>
-                            <li><span class="die-result text-ink">6-</span> 暴露了位置。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">我讓你消失 (體力)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Intimidate / Fight</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 不想惹麻煩！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 退縮了，但引來多餘關注。</li>
-                            <li><span class="die-result text-ink">6-</span> 嚇不到他們。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">先進科技 (腦力)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Use Modern Tech</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 就像魔法！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 奏效，但裝置壞了。</li>
-                            <li><span class="die-result text-ink">6-</span> 看過這東西。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card">
-                        <h4 class="font-black text-lg text-ink">我疊好了牌 (腦力)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Preparedness</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 早有預料！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 奏效，但遺漏一項關鍵。</li>
-                            <li><span class="die-result text-ink">6-</span> 情況誤判。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-move-card col-span-full">
-                        <h4 class="font-black text-lg text-ink">像魔法一樣，但更慢 (任意)</h4>
-                        <p class="text-[10px] opacity-60 uppercase mb-2 text-ink">Just do it the hard way</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 誰需要魔法？獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 完成了，但比預期久得多。</li>
-                            <li><span class="die-result text-ink">6-</span> 魔法是有理由的。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
                 <!-- 特殊行動 -->
-                <h3 class="text-2xl font-black text-map-red mb-6 text-center italic tracking-tight underline">Special Moves 特殊行動</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                    <div class="map-section-box bg-black/5">
-                        <h4 class="font-black text-ink">我讀過這個！ (腦力)</h4>
-                        <p class="text-[11px] mb-2 leading-tight text-ink">安全且有目標時使用。</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 知道下一步！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 沒看註釋。資訊不全。</li>
-                            <li><span class="die-result text-ink">6-</span> 翻譯錯誤。假資訊。</li>
-                        </ul>
+                <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">特殊動作</h3>
+                <p class="text-sm italic font-light text-center md:text-left uppercase tracking-widest opacity-50 mt-1">
+                    Special Moves
+                </p>  
+                <p class="text-sm font-light text-center md:text-left uppercase tracking-widest opacity-50 mt-1">
+                    以下是只能在特定情境下使用的動作。主持人可依當下情況，彈性調整動作的結果。
+                </p>      
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="map-section-box bg-black/5">
-                        <h4 class="font-black text-ink">阿布拉卡達布拉 (任意)</h4>
-                        <p class="text-[11px] mb-2 leading-tight text-ink">使用藥水或魔法物品。</p>
-                        <ul class="text-xs space-y-1 text-ink">
-                            <li><span class="die-result">10+</span> 天生奇才！獲得 1 點。</li>
-                            <li><span class="die-result">7-9</span> 奏效，但伴隨魔法意外。</li>
-                            <li><span class="die-result text-ink">6-</span> 無效。失去 1 點。</li>
-                        </ul>
+                    <!-- 指定修改：魔法暗語的特殊格式 -->
+                    <div class="special-move-card">
+                        <!-- 標註屬性：大字、淺色、壓在最底層 -->
+                        <div class="move-bg-stat">氣場</div>                        
+                        <div class="move-header">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-black text-2xl text-map-red">魔法般的言語</h4>
+                                <span class="text-xs font-bold opacity-40 uppercase tracking-widest pb-1">The Magic Word</span>
+                            </div>
+                        </div>
+    
+                        <div class="move-content">
+                            <p class="text-sm font-bold mb-4 text-[#1a1a1a]">
+                                動作說明：說服、巧舌如簧。
+                            </p>
+                            
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="die-result">10+</span>
+                                    <span class="text-sm"><b>完全成功</b>。對方完全相信你。恢復 1 點信用。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">7-9</span>
+                                    <span class="text-sm"><b>部分成功</b>。他們同意你說的，但要求一些回報或封口費。</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="die-result">6-</span>
+                                    <span class="text-sm"><b>失敗</b>。被看穿了，情況變得更糟，失去 1 點信用。</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
                 <!-- 補充說明 -->
