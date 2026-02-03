@@ -939,39 +939,32 @@
 
     <!-- 如何進行行動 (劫盜地圖風格) -->
     <section id="page-moves" class="page-content pt-28 pb-28">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="map-container serifr">
-                <div class="map-paper">
-                    <div class="map-header">
-                        <h2 class="map-title serif text-2xl font-black map-red">如何進行行動</h2>
-                        <p class="map-subtitle uppercase tracking-widest text-lg font-semibold">How to make your moves</p>
-                    <section id="page-moves" class="page-content pt-28 pb-28">
-                    </div>
+    <div class="max-w-4xl mx-auto px-6"> <div class="map-container serif">
+            <div class="map-paper p-8 md:p-12"> <div class="map-header mb-10">
+                    <h2 class="map-title serif text-3xl font-black text-[var(--map-red)]">如何進行行動</h2>
+                    <p class="map-subtitle uppercase tracking-widest text-lg font-semibold opacity-80">How to make your moves</p>
                 </div>
-            </div>
-        </div>
-                
-                <!-- 信用點區塊 -->
-                <div class="map-section-box">
-                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-ink">Credits 信用點</h3>
-                    <p class="text-sm leading-relaxed mb-4 text-ink">
+
+                <div class="map-section-box mb-8">
+                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">Credits 信用點</h3>
+                    <p class="text-sm leading-relaxed mb-4 text-[var(--map-ink)]">
                         每位玩家在遊戲開始時擁有 3 點信用點。這是你在遊戲中的貨幣，代表了周圍的人如何看待你。除非你的劇本另有規定，否則信用點上限為 3 點。
                     </p>
-                    <p class="text-sm font-bold text-map-red leading-relaxed bg-[var(--map-red)]/5 p-3 border-l-4 border-[var(--map-red)]">
+                    <p class="text-sm font-bold text-[var(--map-red)] leading-relaxed bg-[var(--map-red)]/5 p-3 border-l-4 border-[var(--map-red)]">
                         如果你用光了信用點，你就失去了所有的公信力，有人發現了你不屬於這所學校！如果發生這種情況，你的角色會被開除。這相當於其他遊戲中的角色死亡。
                     </p>
                 </div>
 
                 <!-- 進行行動說明 -->
-                <div class="map-section-box">
-                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-ink">Making a Move 進行行動</h3>
-                    <p class="text-sm leading-relaxed mb-4 text-ink">
+                <div class="map-section-box mb-8">
+                    <h3 class="text-xl font-black mb-3 border-b border-[var(--map-ink)] pb-1 text-[var(--map-ink)]">Making a Move 進行行動</h3>
+                    <p class="text-sm leading-relaxed mb-4 text-[var(--map-ink)]">
                         每當學生嘗試進行具有失敗風險的事情時，該玩家就會觸發一個「行動」。行動旨在為故事中出現的敘事挑戰提供機械性的解決方案。當你達到這個階段時，主持人（DM）會告訴你正在使用的是哪種行動，然後你將擲出兩個六面骰（2d6）。將兩個骰子的總和加上該行動相關能力的修正值。
                     </p>
                     <div class="space-y-3 mt-4">
                         <div class="flex items-start">
-                            <span class="die-result">10+</span>
-                            <span class="text-sm text-ink"><b>完全成功</b>。你重新獲得 1 點信用點（不超過上限）。</span>
+                            <span class="die-result bg-[var(--map-ink)] text-white px-2 py-0.5 rounded mr-2">10+</span>
+                            <span class="text-sm text-[var(--map-ink)]"><b>完全成功</b>。你重新獲得 1 點信用點。</span>
                         </div>
                         <div class="flex items-start">
                             <span class="die-result">7-9</span>
@@ -993,7 +986,7 @@
                 </div>
 
                 <!-- 標準行動 -->
-                <h3 class="text-2xl font-black text-map-red mb-6 text-center italic tracking-tight underline">Standard Moves 標準行動</h3>
+                <h3 class="text-2xl font-black text-[var(--map-red)] mb-6 text-center italic tracking-tight underline">Standard Moves 標準行動</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     <div class="map-move-card">
                         <h4 class="font-black text-lg text-ink">魔法暗語 (勇氣)</h4>
