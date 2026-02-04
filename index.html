@@ -405,7 +405,7 @@
                 <button id="nav-playbooks" onclick="showPage('playbooks')" class="nav-btn hover:text-magic transition">新生名冊</button>
                 <button id="nav-handbook" onclick="showPage('handbook')" class="nav-btn hover:text-magic transition">新生手冊</button>
                 <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">行動指南</button>
-                <button id="nav-topsecret" onclick="showPage('topsecret')" class="nav-btn text-red-400 hover:text-red-300 transition">魔法學院院長機密手冊</button>
+                <button id="nav-DM" onclick="showPage('DM')" class="nav-btn text-red-400 hover:text-red-300 transition">魔法學院院長機密手冊</button>
             </div>
         </div>
     </nav>
@@ -1403,14 +1403,210 @@
                     </div>
                   </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 其他佔位頁面 -->
-    <section id="page-topsecret" class="page-content pt-28 pb-12"><div class="text-center text-red-500 serif text-3xl">院長室：機密檔案</div></section>
+    <!-- DM -->
+    <section id="page-DM" class="page-content relative min-h-screen overflow-hidden">
+      
+      <div class="max-w-5xl mx-auto px-6 pt-28 pb-28 relative z-0">
+        <div class="document-paper serif shadow-2xl relative">
+          <div class="letter-content p-8 md:p-12">
+            <div class="official-header flex justify-between items-center mb-10 border-b-2 border-black/10 pb-6">
+               <div class="text-left">
+                 <h2 class="text-3xl font-black text-red-900">院長機密手冊</h2>
+                 <p class="uppercase tracking-widest text-xs font-bold opacity-60 mt-1">Headmaster's Confidential Manual</p>
+               </div>
+               <div class="text-right text-[10px] font-bold opacity-40 uppercase tracking-widest">
+                 檔案編號：#DM-777
+               </div>
+            </div>
+            
+            <div class="space-y-8 text-gray-800 leading-relaxed">
+              <div class="p-6 bg-red-50 border-l-4 border-red-900 italic mb-8 shadow-sm">
+                「致親愛的繼任者：魔法學院最偉大的幻術，就是讓所有人都相信我們真的懂魔法。」
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                  <h3 class="text-xl font-bold border-b border-black/10 pb-2 text-red-900">★ 營運真相</h3>
+                  <ul class="list-disc list-inside space-y-3 pl-2 text-sm">
+                    <li><b>自動清掃咒：</b> 其實是掃帚內嵌了微型發動機。</li>
+                    <li><b>貓頭鷹郵局：</b> 貓頭鷹只是裝飾，信件是透過地下氣壓管傳送。</li>
+                    <li><b>校園安全：</b> 萬一露餡，請立即施放「這不科學」大聲咆哮。</li>
+                  </ul>
+                </div>
+                <div class="space-y-4">
+                  <h3 class="text-xl font-bold border-b border-black/10 pb-2 text-red-900">★ 院長叮嚀</h3>
+                  <p class="text-sm italic">「保持神秘感比學會咒語更重要。如果有人質疑你，就扣他們學院 50 分，通常他們就會閉嘴了。」</p>
+                </div>
+              </div>
+    
+              <div class="flex justify-between items-center mt-16 pt-12 pb-12 border-t-2 border-black/10">
+                <div class="text-[10px] font-bold opacity-30 uppercase tracking-widest">End of Secret File</div>
+                <button onclick="showPage('home')" class="magic-roster-btn serif">返回學院大廳</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        <!-- 危險極機密紅色遮罩 -->
+         <div id="dm-overlay" class="absolute inset-0 z-40 bg-red-900 flex items-center justify-center transition-opacity duration-500 overflow-hidden">
+        
+          <!-- 閃爍警告光 -->
+          <div class="absolute inset-0 bg-yellow-400 opacity-10 animate-alert-glow pointer-events-none"></div>
+        
+          <!-- 紅色背景顫抖 -->
+          <div class="absolute inset-0 bg-red-900 animate-red-shake pointer-events-none"></div>
+        
+          <!-- 稀疏掃描線 -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="sparse-line absolute w-full h-1 bg-yellow-300 opacity-40 animate-sparse-scan" style="top:15%;"></div>
+            <div class="sparse-line absolute w-full h-1 bg-yellow-200 opacity-35 animate-sparse-scan" style="top:50%; animation-delay:1s;"></div>
+            <div class="sparse-line absolute w-full h-1 bg-yellow-100 opacity-30 animate-sparse-scan" style="top:75%; animation-delay:2s;"></div>
+          </div>
+        
+          <!-- 裂縫顆粒 + 隨機閃爍火花 -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="crack w-0.7 h-0.7 bg-yellow-100 rounded-full absolute" style="top:15%; left:20%;"></div>
+            <div class="crack w-1 h-1 bg-yellow-300 rounded-full absolute" style="top:40%; left:60%;"></div>
+            <div class="crack w-0.5 h-0.5 bg-yellow-200 rounded-full absolute" style="top:80%; left:35%;"></div>
+            <div class="spark w-1 h-1 bg-white rounded-full absolute animate-spark-random" style="top:25%; left:45%;"></div>
+            <div class="spark w-1.5 h-1.5 bg-white rounded-full absolute animate-spark-random" style="top:60%; left:70%;"></div>
+          </div>
+        
+          <!-- 霧氣 + 顆粒 -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="fog w-full h-full bg-gradient-to-t from-red-900/70 via-red-900/50 to-red-900/10 opacity-40 animate-fog"></div>
+          </div>
+        
+          <!-- 魔法粒子漂浮 -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="particle w-1 h-1 bg-yellow-400 rounded-full animate-float absolute" style="top:15%; left:25%;"></div>
+            <div class="particle w-1.5 h-1.5 bg-yellow-300 rounded-full animate-float absolute" style="top:45%; left:75%;"></div>
+            <div class="particle w-2 h-2 bg-yellow-200 rounded-full animate-float absolute" style="top:75%; left:35%;"></div>
+          </div>
+        
+          <!-- **中央校徽，置於最上層** -->
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/0809843fe4674414145771cc879a584fdc122a71/pics/rschool.png"
+                 class="absolute pointer-events-none z-50"
+                 style="top:50%; left:50%; width:75%; max-width:none; transform: translate(-50%, -50%) scale(1); opacity:0.1; filter: brightness(60%)">
 
+        
+          <!-- 中心按鈕 -->
+          <div class="w-full max-w-md px-10 text-center space-y-12 z-50">
+            <div id="confirm-screen" class="flex flex-col items-center space-y-6">
+              <h2 class="text-3xl font-bold text-yellow-300 serif drop-shadow-lg">是否要查看機密檔案？</h2>
+              <button id="view-file-btn" class="relative px-12 py-5 bg-yellow-400 text-black font-bold rounded-lg shadow-2xl hover:bg-yellow-300 transition-all ring-4 ring-yellow-300 ring-offset-4 ring-offset-red-900 group">
+                <span class="relative z-10">確認解密</span>
+                <span class="absolute inset-0 rounded-lg animate-ping opacity-50 bg-yellow-200"></span>
+              </button>
+            </div>
+        
+            <div id="progress-container" class="hidden w-full flex flex-col items-center space-y-6">
+              <h2 class="text-2xl font-bold text-yellow-300 serif drop-shadow-lg animate-pulse">正在瓦解保護咒...</h2>
+              <div class="relative w-full h-6 bg-black/40 rounded-full overflow-hidden border-2 border-yellow-400">
+                <div id="progress-bar" class="absolute h-full w-0 bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-100 transition-all duration-100" style="box-shadow: 0 0 15px rgba(255,255,150,0.8);"></div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+
+        
+        <style>
+          /* 紅色背景顫抖 */
+            .animate-red-shake { animation: red-shake 0.3s infinite alternate; }
+            @keyframes red-shake { 0% { transform: translate(0,0); } 50% { transform: translate(3px,-2px); } 100% { transform: translate(-2px,2px); } }
+            
+            /* 閃爍警告光 */
+            .animate-alert-glow { animation: alert-glow 1.5s ease-in-out infinite alternate; }
+            @keyframes alert-glow { 0% { opacity:0.05; } 50% { opacity:0.15; } 100% { opacity:0.05; } }
+            
+            /* 稀疏掃描線 */
+            .animate-sparse-scan { animation: sparse-scan 2s linear infinite; }
+            @keyframes sparse-scan { 0% { left:-100%; } 50% { left:0%; } 100% { left:100%; } }
+            
+            /* 霧氣動畫 */
+            .animate-fog { animation: fog-move 5s ease-in-out infinite alternate; }
+            @keyframes fog-move { 0% { transform: translate(0,0); opacity:0.35; } 50% { transform: translate(5px, -5px); opacity:0.45; } 100% { transform: translate(0,0); opacity:0.35; } }
+            
+            /* 火花隨機閃爍 */
+            .animate-spark-random { animation: spark-random 1s linear infinite alternate; }
+            @keyframes spark-random {
+              0% { opacity:0.2; transform: scale(1) translate(0,0); }
+              25% { opacity:1; transform: scale(1.5) translate(2px,-1px); }
+              50% { opacity:0.3; transform: scale(0.8) translate(-2px,1px); }
+              75% { opacity:1; transform: scale(1.3) translate(1px,2px); }
+              100% { opacity:0.2; transform: scale(1) translate(0,0); }
+            }
+            
+            /* 魔法粒子 */
+            .animate-float { animation: dm-float 6s ease-in-out infinite alternate; }
+            @keyframes dm-float { 0% { transform: translateY(0); } 100% { transform: translateY(-30px); } }
+            
+            /* ping效果 */
+            .animate-ping { animation: dm-ping 1.5s cubic-bezier(0,0,0.2,1) infinite; }
+            @keyframes dm-ping { 75%,100% { transform: scale(1.8); opacity:0; } }
+
+            /* 校徽微顫動 + 呼吸動畫 */
+            #dm-overlay img {
+              animation: emblem-shake 0.5s ease-in-out infinite alternate, emblem-breath 8s ease-in-out infinite alternate;
+            }
+            
+            @keyframes emblem-shake {
+              0%   { transform: translate(-50%, -50%) rotate(0deg); }
+              25%  { transform: translate(-50%, -50%) rotate(3deg); }
+              50%  { transform: translate(-50%, -50%) rotate(-2deg); }
+              75%  { transform: translate(-50%, -50%) rotate(1.5deg); }
+              100% { transform: translate(-50%, -50%) rotate(-2.5deg); }
+            }
+            
+            @keyframes emblem-breath {
+              0%   { transform: translate(-50%, -50%) scale(1); }
+              50%  { transform: translate(-50%, -50%) scale(1.01); }
+              100% { transform: translate(-50%, -50%) scale(1); }
+            }
+
+        </style>
+
+    
+      <script>
+        (function() {
+          const viewBtn = document.getElementById('view-file-btn');
+          const confirmScreen = document.getElementById('confirm-screen');
+          const progressContainer = document.getElementById('progress-container');
+          const progressBar = document.getElementById('progress-bar');
+          const overlay = document.getElementById('dm-overlay');
+    
+          viewBtn.addEventListener('click', () => {
+            confirmScreen.classList.add('hidden');
+            progressContainer.classList.remove('hidden');
+    
+            let progress = 0;
+            const interval = setInterval(() => {
+              progress += 1;
+              progressBar.style.width = progress + '%';
+              
+              // 紅色遮罩透明度隨進度下降
+              overlay.style.opacity = (1 - progress/100).toString();
+    
+              if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                  overlay.style.display = 'none'; 
+                }, 500);
+              }
+            }, 35);
+          });
+        })();
+      </script>
+    </section>
+
+                        
     <footer class="py-16 bg-[#06201e] border-t border-teal-500/20 mt-15">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="text-magic text-2xl font-bold mb-4 serif">YNAW TRPG</div>
