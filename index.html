@@ -405,7 +405,7 @@
                 <button id="nav-playbooks" onclick="showPage('playbooks')" class="nav-btn hover:text-magic transition">新生名冊</button>
                 <button id="nav-handbook" onclick="showPage('handbook')" class="nav-btn hover:text-magic transition">新生手冊</button>
                 <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">行動指南</button>
-                <button id="nav-DM" onclick="showPage('DM')" class="nav-btn text-red-400 hover:text-red-300 transition">魔法學院院長機密手冊</button>
+                <button id="nav-DM" onclick="showPage('DM')" class="nav-btn text-red-400 hover:text-red-300 transition">院長機密手冊</button>
             </div>
         </div>
     </nav>
@@ -947,7 +947,7 @@
                                         </h6>
                                     </div>
                                     <p class="text-min-limit text-sm leading-loose font-normal">
-                                        你們決定要參加一個課外活動，且畢竟在魔法學院，當然是與魔法有關的。請描述是什麼樣的活動。
+                                        你們決定要參加一個課外活動。畢竟你們正在魔法學院就讀，這當然不會是普通的活動——請描述這是一個怎樣的、與魔法相關的活動。
                                     </p>
                                 </div>
                         
@@ -973,7 +973,7 @@
                                         </h6>
                                     </div>
                                     <p class="text-min-limit text-sm leading-loose font-normal">
-                                        同學們慫恿你們晚上偷偷溜出宿舍，到學院地牢偷東西，他們說這是所有學生都必須參加的儀式。並且當然，他們會全程「監督」你們完成。
+                                        同學們慫恿你們晚上偷偷溜出宿舍，潛入學院地牢深處偷走一樣東西。他們說，這是所有學生都必須經歷的「入學儀式」。並且當然，他們會全程「監督」你們完成。
                                     </p>
                                 </div>
                         
@@ -986,7 +986,7 @@
                                         </h6>
                                     </div>
                                     <p class="text-min-limit text-sm leading-loose font-normal">
-                                        學院將舉辦一場盛宴，所有最受歡迎、最有影響力的學生都會出席。為了更加讓其他學生信服，你們勢必要讓他們留下深刻的印象，來鞏固自己的形象。
+                                        學院即將舉辦一場大型宴會，所有最受歡迎、最有影響力的學生都會出席。若想在學院站穩腳步，你們必須好好把握，在眾人面前留下令人難忘的印象。
                                     </p>
                                 </div>
                         
@@ -999,7 +999,7 @@
                                         </h6>
                                     </div>
                                     <p class="text-min-limit text-sm leading-loose font-normal">
-                                        最近常在晚上聽到一些奇怪的聲響，總感覺是從學校某個被禁止出入的區域傳來的，而你們決定去一探究竟。
+                                        最近夜裡你們時常聽見詭異的聲響，總感覺是從學校某個被禁止出入的區域傳來的。你們決定冒險前去查明真相。
                                     </p>
                                 </div>
                         
@@ -1012,7 +1012,7 @@
                                         </h6>
                                     </div>
                                     <p class="text-min-limit text-sm leading-loose font-normal">
-                                        本週是校友返校週，你們(和其他幾位同學)被選中代表學院參加一系列與對手學校的魔法競賽。
+                                        校友返校週正式展開，你們（以及其他幾位同學）被選中代表學院出賽，參加一系列與對手學校的魔法競賽，肩負起學院的榮耀與期待。
                                     </p>
                                 </div>
                             </div>
@@ -1408,66 +1408,270 @@
     </section>
 
     <!-- DM -->
-    <section id="page-DM" class="page-content relative min-h-screen overflow-hidden">
-      
-      <div class="max-w-5xl mx-auto px-6 pt-28 pb-28 relative z-0">
-        <div class="document-paper serif shadow-2xl relative">
-          <div class="letter-content p-8 md:p-12">
-            <div class="official-header flex justify-between items-center mb-10 border-b-2 border-black/10 pb-6">
-               <div class="text-left">
-                 <h2 class="text-3xl font-black text-red-900">院長機密手冊</h2>
-                 <p class="uppercase tracking-widest text-xs font-bold opacity-60 mt-1">Headmaster's Confidential Manual</p>
-               </div>
-               <div class="text-right text-[10px] font-bold opacity-40 uppercase tracking-widest">
-                 檔案編號：#DM-777
-               </div>
-            </div>
-            
-            <div class="space-y-8 text-gray-800 leading-relaxed">
-              <div class="p-6 bg-red-50 border-l-4 border-red-900 italic mb-8 shadow-sm">
-                「致親愛的繼任者：魔法學院最偉大的幻術，就是讓所有人都相信我們真的懂魔法。」
-              </div>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                  <h3 class="text-xl font-bold border-b border-black/10 pb-2 text-red-900">★ 營運真相</h3>
-                  <ul class="list-disc list-inside space-y-3 pl-2 text-sm">
-                    <li><b>自動清掃咒：</b> 其實是掃帚內嵌了微型發動機。</li>
-                    <li><b>貓頭鷹郵局：</b> 貓頭鷹只是裝飾，信件是透過地下氣壓管傳送。</li>
-                    <li><b>校園安全：</b> 萬一露餡，請立即施放「這不科學」大聲咆哮。</li>
-                  </ul>
-                </div>
-                <div class="space-y-4">
-                  <h3 class="text-xl font-bold border-b border-black/10 pb-2 text-red-900">★ 院長叮嚀</h3>
-                  <p class="text-sm italic">「保持神秘感比學會咒語更重要。如果有人質疑你，就扣他們學院 50 分，通常他們就會閉嘴了。」</p>
-                </div>
-              </div>
+    <section id="page-DM" class="page-content pt-28 pb-28" style="background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-light) 100%);">
     
-              <div class="flex justify-between items-center mt-16 pt-12 pb-12 border-t-2 border-black/10">
-                <div class="text-[10px] font-bold opacity-30 uppercase tracking-widest">End of Secret File</div>
-                <button onclick="showPage('home')" class="magic-roster-btn serif">返回學院大廳</button>
-              </div>
-            </div>
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="document-paper serif">
+    
+        <!-- 校徽水印 -->
+        <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/school.png"
+             class="absolute pointer-events-none z-10"
+             style="top:50%; left:50%; width:75%; max-width:none; transform: translate(-50%, -50%); opacity:0.05;">
+    
+        <div class="letter-content p-6 md:p-8 relative z-20 flex flex-col">
+    
+          <!-- 表頭：垂直置中貼近上緣 -->
+          <div class="official-header flex flex-col items-center mb-6">
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/school.png"
+                 class="w-20 h-20 mb-2 -mt-8 grayscale opacity-80">
+            <h1 class="text-3xl font-black tracking-widest text-black mb-1 text-center">院長機密手冊</h1>
+            <p class="text-sm uppercase tracking-widest font-bold opacity-60 text-center">DM's GUIDELINE</p>
           </div>
+    
+        <!-- 引言 -->
+        <div class="mb-8 text-gray-800 leading-relaxed">
+          <p class="mb-4">魔法學院院長（DM）在遊戲中扮演著一個獨特的角色。雖然桌上的每個人都會參與世界的建構與故事的講述，但你將承擔一個更為主動、引導遊戲進行的角色。</p>
+          <p class="mb-4">你會描述角色所處的世界、扮演其他所有角色，並決定學生們將面對什麼樣的挑戰。當角色進行探索時，你決定他們會發現什麼；而當他們想做的事情觸發了一個動作時，你則負責敘述其結果。</p>
+          <p class="mb-4">在你主持遊戲時，請記住以下幾個基本原則：</p>
+          <ul class="list-none pl-4 space-y-2">
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>傾聽你的玩家：</b> 注意他們隨口創造的點子，這些往往是日後最有趣的元素之一。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>只要可能，就答應玩家嘗試：</b> 遊戲帶著荒謬感，讓玩家挑戰合理性極限。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>強調社交層面：</b> 玩家探索校園時，保持「差一點被抓包」的緊張感。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>只有在失敗存在風險時才擲骰：</b> 玩家信用點有限，不應因瑣碎行動冒險。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>氣氛過於安逸時丟出障礙：</b> 可參考第 26 頁範例。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>提出挑戰，不給解法：</b> 相信玩家能順著點子走。</li>
+            <li class="before:content-['✢'] before:text-gray-700 before:mr-2"><b>站在玩家一邊：</b> 給每個角色發光機會，邀請沉默玩家加入對話。</li>
+          </ul>
+        </div>
+        
+        <!-- 特別提醒 & 遊戲結構 | 左右兩欄便條紙風格，加入黑色裝飾圖 -->
+        <section class="my-8 grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+          <!-- 特別提醒 -->
+          <div class="p-6 bg-white/40 border border-black/60 relative">
+            <!-- 上方黑色裝飾圖，縮小10%，貼下緣到 column 外框上緣 -->
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/red_deco.png"
+                 class="absolute left-1/2 bottom-full transform -translate-x-1/2"
+                 style="filter: brightness(0); width:8rem; height:auto; opacity:0.8;">
+            
+            <h3 class="text-xl font-bold mb-3 font-serif">特別提醒 | A Special Note</h3>
+            <p class="mb-3 font-handwriting leading-relaxed text-gray-800">《You’re (Not) A Wizard》的核心是社交。角色們努力用虛張聲勢蒙混過關，試圖說服周遭的人相信他們「屬於這裡」。</p>
+            <p class="font-handwriting leading-relaxed text-gray-800">他們可能想單獨行動，但不應讓他們過於安逸。其他角色可能會在最糟糕時出現，或跟著他們一起行動，維持假象的努力很重要。</p>
+            
+            <!-- 下方黑色裝飾圖，縮小10%，反轉180°，貼上緣到 column 外框下緣 -->
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/red_deco.png"
+                 class="absolute left-1/2 top-full transform -translate-x-1/2 rotate-180"
+                 style="filter: brightness(0); width:8rem; height:auto; opacity:0.8;">
+          </div>
+        
+          <!-- 遊戲結構 -->
+          <div class="p-6 bg-white/40 border border-black/60 relative">
+            <!-- 上方黑色裝飾圖 -->
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/red_deco.png"
+                 class="absolute left-1/2 bottom-full transform -translate-x-1/2"
+                 style="filter: brightness(0); width:8rem; height:auto; opacity:0.8;">
+            
+            <h3 class="text-xl font-bold mb-3 font-serif">遊戲結構 | Structure of the Game</h3>
+            <p class="mb-3 font-handwriting leading-relaxed text-gray-800">「新生說明會」（第 6–7 頁）提供遊戲設定的基本架構。玩家輪流進行時，注意地點、其他學生或老師，以及潛在挑戰或劇情鉤子。</p>
+            <p class="font-handwriting leading-relaxed text-gray-800">設定最後階段，玩家選擇「當前情境」，成為主線故事。你的工作是確保事情不會過於順利。</p>
+            
+            <!-- 下方黑色裝飾圖，反轉180° -->
+            <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/9a508be4776945f9f83edd042c97e3c1b61e305d/pics/red_deco.png"
+                 class="absolute left-1/2 top-full transform -translate-x-1/2 rotate-180"
+                 style="filter: brightness(0); width:8rem; height:auto; opacity:0.8;">
+          </div>
+        
+        </section>
+
+       
+        <!-- 流程圖: 開始 / 進行 / 結束 -->
+        <section class="my-10">
+            <div class="w-full h-px bg-black/30 mb-8"></div>
+          <h3 class="text-2xl font-bold mb-8 text-center">遊戲流程 | Game Flow</h3>
+        
+          <div class="flex flex-col items-center gap-12">
+        
+            <!-- 開始遊戲 -->
+            <div class="w-full md:w-3/4 p-6 border border-black/60 bg-white/40 flex flex-col items-start -translate-x-6 relative">
+              <h4 class="font-bold text-lg mb-2">開始遊戲</h4>
+              <p class="mb-4">完成設定後布置場景，玩家決定行動，可選擇其中一個 DM 動作作為開場。</p>
+              <ul class="list-none pl-4 space-y-1">
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">玩家準備角色及裝備</li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">DM設定初始場景</li>
+              </ul>
+            
+              <!-- 箭頭圖片 -->
+              <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/b4062532e1b0b1f9199ddfdcfc384e9ee37546b9/pics/arrow.png"
+                   class="absolute left-1/2 transform -translate-x-1/2"
+                   style="bottom:0; transform: translateX(-50%) translateY(55%); width:6rem; height:auto;">
+            </div>
+        
+            <!-- 遊戲進行 -->
+            <div class="w-full md:w-3/4 p-6 border border-black/60 bg-white/40 flex flex-col items-start translate-x-6 relative">
+              <h4 class="font-bold text-lg mb-4">遊戲進行</h4>
+              <ul class="list-none grid grid-cols-2 gap-x-6 gap-y-2 pl-4">
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">有人質疑學生行為</li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">學生被挑戰證明自己</li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">探索未知校園區域</li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2">奇怪聲響或求助</li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2 col-span-2">
+                  發現魔法生物或幽靈，有助或危險
+                </li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2 col-span-2">
+                  發現魔法物品但遭阻擋
+                </li>
+                <li class="before:content-['✢'] before:text-gray-700 before:mr-2 col-span-2">
+                  迷路或玩家創造的元素引入
+                </li>
+              </ul>
+        
+              <!-- 箭頭圖片 -->
+              <img src="https://raw.githubusercontent.com/chiouuuuu/YNAW/b4062532e1b0b1f9199ddfdcfc384e9ee37546b9/pics/arrow.png"
+                   class="absolute left-2/3 transform -translate-x-1/2"
+                   style="bottom:0; transform: translateX(-50%) translateY(55%); width:6rem; height:auto;">
+            </div>
+        
+            <!-- 結束遊戲 -->
+            <div class="w-full md:w-3/4 p-6 border border-black/60 bg-white/40 flex flex-col items-start -translate-x-6">
+              <h4 class="font-bold text-lg mb-2">結束遊戲</h4>
+              <p>玩家克服挑戰後遊戲結束。角色成功避開危險即完成情境，也可安排角色被抓包或退學，但避免必敗情境。</p>
+            </div>
+        
+          </div>
+        </section>
+
+
+          <!-- 卡片區塊 -->
+          <section class="mb-10 grid gap-6">
+              <div class="w-full h-px bg-black/30"></div>
+          <h3 class="text-2xl font-bold text-center mt-3">工具包 | DM Toolkit</h3>
+          <section class="mt-2 space-y-4">
+
+              <!-- 挑戰範例 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">挑戰範例</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">校園內出現危險魔法生物（龍、蠍獅、食人魔等）</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">學生被送去留校察看，需執行危險任務</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">學生發現老師也有秘密，需要協助其偽裝</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">學生察覺魔法竊賊企圖竊取強大物品</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">有人抓到學生，必須保護秘密</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">魔法出現異常，學生必須在被發現前修復問題</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">角色遭遇奇怪倒楣事件，可能是詛咒</li>
+                </ul>
+              </div>
+            
+              <!-- 協助工具 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">協助工具 | Tools</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">臨場即興創作，嘗試並相信每個玩家都享受遊戲</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">提供表格引入各種元素選項</li>
+                </ul>
+              </div>
+            
+              <!-- 魔法物品 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">魔法物品 | Magical Items</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">藥水：賦予隱形、飛行等能力</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">巨大生鏽鑰匙：使用 Brains 擲 Abracadabra 解鎖</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">古老祕密書：下一次 Brains 擲骰 +2</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">古老盔甲：I’ll Make You Disappear +2，Now You See Me -1</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">空白卷軸：Bravado 擲 Abracadabra +2，只能使用一次</li>
+                </ul>
+              </div>
+            
+              <!-- 其他角色 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">其他角色（NPC） | Other Characters</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">另一名學生，透過挑戰掩飾不安</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">嚴厲但樂於協助學生的老師</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">善意卻健忘的幽靈</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">不信任學生的老師</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">不依賴魔法的管理員</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">渴望被接納的學生</li>
+                </ul>
+              </div>
+            
+              <!-- 魔法意外 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">魔法意外 | Magical Mishaps</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">角色受傷，需要額外醫療</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">物品發出巨響，引來注意</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">角色被能量命中，下一次動作 -1</li>
+                </ul>
+              </div>
+            
+              <!-- 校園區域 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">校園區域 | Areas of the School</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">煉金／藥水實驗室</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">校地邊緣魔法樹林</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">禁止學生區域</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">鳥舍，各式魔法生物收容</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">地牢，存放古代遺物</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">宿舍，學生八卦不止息</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">安全儲藏室，只對老師開放</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">不存在的房間</li>
+                </ul>
+              </div>
+            
+              <!-- 魔法生物 -->
+              <div class="w-full p-6 border border-black/60 bg-white/40 flex flex-col items-start">
+                <h3 class="inline-block bg-black/70 text-white text-sm font-bold px-2 py-1 mb-3 tracking-wider">魔法生物 | Magical Creatures</h3>
+                <ul class="list-none pl-4 space-y-2">
+                  <li class="before:content-['✢'] before:text-black before:mr-2">照料校園的花園地精</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">惡作劇小精靈</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">會引誘學生迷路的鬼火</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">守護學院最強祕密的巨龍</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">熟識後友善的食人魔</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2">野生蠍獅群，不可招惹</li>
+                </ul>
+              </div>
+            
+            </section>
+
+
+    
+          <!-- 底部按鈕 -->
+          <div class="flex justify-between items-center mt-8 pt-4 border-t-2 border-black/10">
+            <div class="text-[10px] font-bold opacity-30 uppercase tracking-widest">End of Secret File</div>
+            <button onclick="showPage('home')" class="magic-roster-btn serif">返回學院大廳</button>
+          </div>
+    
         </div>
       </div>
-    
-        <!-- 危險極機密紅色遮罩 -->
-         <div id="dm-overlay" class="absolute inset-0 z-40 bg-red-900 flex items-center justify-center transition-opacity duration-500 overflow-hidden">
+    </div>
+   
+          <!-- 危險極機密紅色遮罩 -->
+          <div id="dm-overlay" class="fixed inset-0 z-40 bg-red-900 flex items-center justify-center overflow-hidden">
         
-          <!-- 閃爍警告光 -->
-          <div class="absolute inset-0 bg-yellow-400 opacity-10 animate-alert-glow pointer-events-none"></div>
+            <!-- 閃爍警告光 -->
+            <div class="absolute inset-0 bg-yellow-400 opacity-10 animate-alert-glow pointer-events-none"></div>
         
-          <!-- 紅色背景顫抖 -->
-          <div class="absolute inset-0 bg-red-900 animate-red-shake pointer-events-none"></div>
+            <!-- 紅色背景顫抖 -->
+            <div class="absolute inset-0 bg-red-900 animate-red-shake pointer-events-none"></div>
         
-          <!-- 稀疏掃描線 -->
-          <div class="absolute inset-0 pointer-events-none">
-            <div class="sparse-line absolute w-full h-1 bg-yellow-300 opacity-40 animate-sparse-scan" style="top:15%;"></div>
-            <div class="sparse-line absolute w-full h-1 bg-yellow-200 opacity-35 animate-sparse-scan" style="top:50%; animation-delay:1s;"></div>
-            <div class="sparse-line absolute w-full h-1 bg-yellow-100 opacity-30 animate-sparse-scan" style="top:75%; animation-delay:2s;"></div>
-          </div>
-        
+            <!-- 稀疏掃描線（左右進場） -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+              <!-- 從左進 -->
+              <div class="scan-line from-left absolute w-full h-1 bg-yellow-300/30"
+                   style="top:22%;"></div>
+            
+              <!-- 從右進 -->
+              <div class="scan-line from-right absolute w-full h-1 bg-yellow-200/25"
+                   style="top:48%; animation-delay:1.2s;"></div>
+            
+              <!-- 從右進 -->
+              <div class="scan-line from-right absolute w-full h-1 bg-yellow-100/20"
+                   style="top:72%; animation-delay:2.4s;"></div>
+            </div>
+
+              
           <!-- 裂縫顆粒 + 隨機閃爍火花 -->
           <div class="absolute inset-0 pointer-events-none">
             <div class="crack w-0.7 h-0.7 bg-yellow-100 rounded-full absolute" style="top:15%; left:20%;"></div>
@@ -1495,23 +1699,23 @@
                  style="top:50%; left:50%; width:75%; max-width:none; transform: translate(-50%, -50%) scale(0.2); opacity:0.1; filter: brightness(60%)">
 
         
-          <!-- 中心按鈕 -->
-          <div class="w-full max-w-md px-10 text-center space-y-12 z-50">
-            <div id="confirm-screen" class="flex flex-col items-center space-y-6">
-              <h2 class="text-3xl font-bold text-yellow-300 serif drop-shadow-lg">是否要查看機密檔案？</h2>
-              <button id="view-file-btn" class="relative px-12 py-5 bg-yellow-400 text-black font-bold rounded-lg shadow-2xl hover:bg-yellow-300 transition-all ring-4 ring-yellow-300 ring-offset-4 ring-offset-red-900 group">
-                <span class="relative z-10">確認解密</span>
-                <span class="absolute inset-0 rounded-lg animate-ping opacity-50 bg-yellow-200"></span>
-              </button>
-            </div>
+            <!-- 中心按鈕 -->
+            <div class="w-full max-w-md px-10 text-center space-y-12 z-50">
+              <div id="confirm-screen" class="flex flex-col items-center space-y-6">
+                <h2 class="text-3xl font-bold text-yellow-300 serif drop-shadow-lg">是否要解除保護咒？</h2>
+                <button id="view-file-btn" class="relative px-8 py-3 bg-yellow-400 text-red-900 font-bold rounded-2xl shadow-2xl hover:bg-yellow-300 transition-all ring-4 ring-yellow-300 ring-offset-4 ring-offset-red-900 group">
+                  <span class="text-lg relative z-10">解除</span>
+                  <span class="absolute inset-0 rounded-2xl animate-ping opacity-50 bg-yellow-200"></span>
+                </button>
+              </div>
         
-            <div id="progress-container" class="hidden w-full flex flex-col items-center space-y-6">
-              <h2 class="text-2xl font-bold text-yellow-300 serif drop-shadow-lg animate-pulse">正在瓦解保護咒...</h2>
-              <div class="relative w-full h-6 bg-black/40 rounded-full overflow-hidden border-2 border-yellow-400">
-                <div id="progress-bar" class="absolute h-full w-0 bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-100 transition-all duration-100" style="box-shadow: 0 0 15px rgba(255,255,150,0.8);"></div>
+              <div id="progress-container" class="hidden w-full flex flex-col items-center space-y-6">
+                <h2 class="text-2xl font-bold text-yellow-300 serif drop-shadow-lg animate-pulse">保護咒解除中...</h2>
+                <div class="relative w-full h-6 bg-black/40 rounded-full overflow-hidden border-2 border-yellow-400">
+                  <div id="progress-bar" class="absolute h-full w-0 bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-100 transition-all duration-100" style="box-shadow: 0 0 15px rgba(255,255,150,0.8);"></div>
+                </div>
               </div>
             </div>
-          </div>
         
         </div>
 
@@ -1523,19 +1727,91 @@
             @keyframes red-shake { 0% { transform: translate(0,0); } 50% { transform: translate(3px,-2px); } 100% { transform: translate(-2px,2px); } }
             
             /* 閃爍警告光 */
-            .animate-alert-glow { animation: alert-glow 1.5s ease-in-out infinite alternate; }
-            @keyframes alert-glow { 0% { opacity:0.05; } 50% { opacity:0.15; } 100% { opacity:0.05; } }
+            .animate-alert-glow { animation: alert-glow 3s ease-in-out infinite; }
+            @keyframes alert-glow {
+              0%   { opacity:0.03; }
+              50%  { opacity:0.08; }
+              100% { opacity:0.03; }
+            }
             
-            /* 稀疏掃描線 */
-            .animate-sparse-scan { animation: sparse-scan 2s linear infinite; }
-            @keyframes sparse-scan { 0% { left:-100%; } 50% { left:0%; } 100% { left:100%; } }
+            /* 掃描線共用設定 */
+            .scan-line {
+              position: absolute;
+              width: 100%;
+              height: 0.25rem; /* 等同 h-1 */
+              left: -120%;
+              pointer-events: none;
+            
+              animation-duration: 6s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite;
+            }
+            /* 從左側滑入 → 右側滑出 */
+            .from-left {
+              animation-name: scan-from-left;
+            }
+            
+            @keyframes scan-from-left {
+              0% {
+                left: -120%;
+                opacity: 0;
+              }
+            
+              10% {
+                opacity: 0.3;
+              }
+            
+              50% {
+                opacity: 0.3;
+              }
+            
+              90% {
+                opacity: 0.2;
+              }
+            
+              100% {
+                left: 120%;
+                opacity: 0;
+              }
+            }
+            /* 從右側滑入 → 左側滑出 */
+            .from-right {
+              animation-name: scan-from-right;
+            }
+            
+            @keyframes scan-from-right {
+              0% {
+                left: 120%;
+                opacity: 0;
+              }
+            
+              10% {
+                opacity: 0.25;
+              }
+            
+              50% {
+                opacity: 0.25;
+              }
+            
+              90% {
+                opacity: 0.15;
+              }
+            
+              100% {
+                left: -120%;
+                opacity: 0;
+              }
+            }
             
             /* 霧氣動畫 */
-            .animate-fog { animation: fog-move 5s ease-in-out infinite alternate; }
+            .animate-fog {animation: fog-move 10s ease-in-out infinite; }
             @keyframes fog-move { 0% { transform: translate(0,0); opacity:0.35; } 50% { transform: translate(5px, -5px); opacity:0.45; } 100% { transform: translate(0,0); opacity:0.35; } }
             
             /* 火花隨機閃爍 */
-            .animate-spark-random { animation: spark-random 1s linear infinite alternate; }
+            .animate-spark-random {
+              animation: spark-random 2.5s ease-in-out infinite;
+            }
+
             @keyframes spark-random {
               0% { opacity:0.2; transform: scale(1) translate(0,0); }
               25% { opacity:1; transform: scale(1.5) translate(2px,-1px); }
@@ -1548,9 +1824,46 @@
             .animate-float { animation: dm-float 6s ease-in-out infinite alternate; }
             @keyframes dm-float { 0% { transform: translateY(0); } 100% { transform: translateY(-30px); } }
             
-            /* ping效果 */
-            .animate-ping { animation: dm-ping 1.5s cubic-bezier(0,0,0.2,1) infinite; }
-            @keyframes dm-ping { 75%,100% { transform: scale(1.8); opacity:0; } }
+            /* 自然魔法光暈（柔和、擴散、不規則呼吸） */
+            .animate-ping {
+              animation: magic-aura-soft 4.8s ease-in-out infinite;
+              filter: blur(6px);
+            }
+            
+            @keyframes magic-aura-soft {
+              0% {
+                transform: scale(1);
+                opacity: 0.35;
+                box-shadow:
+                  0 0 18px 6px rgba(255, 230, 140, 0.18),
+                  0 0 40px 16px rgba(255, 200, 90, 0.12);
+              }
+            
+              35% {
+                transform: scale(1.15);
+                opacity: 0.55;
+                box-shadow:
+                  0 0 30px 14px rgba(255, 235, 160, 0.28),
+                  0 0 70px 30px rgba(255, 210, 110, 0.18);
+              }
+            
+              60% {
+                transform: scale(1.1);
+                opacity: 0.45;
+                box-shadow:
+                  0 0 24px 10px rgba(255, 225, 150, 0.22),
+                  0 0 55px 24px rgba(255, 195, 90, 0.15);
+              }
+            
+              100% {
+                transform: scale(1);
+                opacity: 0.35;
+                box-shadow:
+                  0 0 18px 6px rgba(255, 230, 140, 0.18),
+                  0 0 40px 16px rgba(255, 200, 90, 0.12);
+              }
+            }
+
 
             /* 校徽微顫動 + 呼吸動畫 */
             #dm-overlay img {
@@ -1558,11 +1871,9 @@
             }
             
             @keyframes emblem-shake {
-              0%   { transform: translate(-50%, -50%) rotate(0deg); }
-              25%  { transform: translate(-50%, -50%) rotate(3deg); }
-              50%  { transform: translate(-50%, -50%) rotate(-2deg); }
-              75%  { transform: translate(-50%, -50%) rotate(1.5deg); }
-              100% { transform: translate(-50%, -50%) rotate(-2.5deg); }
+              0%, 95%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+              96% { transform: translate(-50%, -50%) rotate(1deg); }
+              98% { transform: translate(-50%, -50%) rotate(-1deg); }
             }
             
             @keyframes emblem-breath {
