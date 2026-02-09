@@ -395,20 +395,80 @@
 
     <!-- 全域導覽列 -->
     <nav class="fixed w-full z-50 bg-[#06201e]/90 border-b border-yellow-500/20 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-            <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
-                <span class="text-xl font-bold tracking-tighter text-magic">你(不)是個巫師<span class="text-white/50 text-sm ml-1">用愛發電中文化</span></span>
-            </div>
-            
-            <div class="hidden lg:flex space-x-6 font-bold uppercase tracking-widest">
-                <button id="nav-orientation" onclick="showPage('orientation')" class="nav-btn hover:text-magic transition">入學須知</button>
-                <button id="nav-playbooks" onclick="showPage('playbooks')" class="nav-btn hover:text-magic transition">新生名冊</button>
-                <button id="nav-handbook" onclick="showPage('handbook')" class="nav-btn hover:text-magic transition">新生手冊</button>
-                <button id="nav-moves" onclick="showPage('moves')" class="nav-btn hover:text-magic transition">行動指南</button>
-                <button id="nav-DM" onclick="showPage('DM')" class="nav-btn text-red-400 hover:text-red-300 transition">院長機密手冊</button>
-            </div>
+      <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
+          <span class="text-xl font-bold tracking-tighter text-magic">
+            你(不)是個巫師
+            <span class="text-white/50 text-sm ml-2">用愛發電中文化</span>
+          </span>
         </div>
+    
+        <!-- 桌機選單 -->
+        <div class="hidden lg:flex space-x-6 font-bold uppercase tracking-widest">
+          <button onclick="showPage('orientation')" class="text-lg nav-btn hover:text-magic transition">入學須知</button>
+          <button onclick="showPage('playbooks')" class="text-lg nav-btn hover:text-magic transition">新生名冊</button>
+          <button onclick="showPage('handbook')" class="text-lg nav-btn hover:text-magic transition">新生手冊</button>
+          <button onclick="showPage('moves')" class="text-lg nav-btn hover:text-magic transition">行動指南</button>
+          <button onclick="showPage('DM')" class="text-lg nav-btn text-red-400 hover:text-red-300 transition">院長機密手冊</button>
+        </div>
+    
+        <!-- 漢堡按鈕 -->
+        <button id="hamburger" class="lg:hidden relative w-8 h-8 flex flex-col justify-between items-center group" onclick="toggleMobileMenu()">
+          <span class="block w-full h-1 bg-yellow-300 rounded transform transition-all duration-300 ease-in-out"></span>
+          <span class="block w-full h-1 bg-yellow-300 rounded transform transition-all duration-300 ease-in-out"></span>
+          <span class="block w-full h-1 bg-yellow-300 rounded transform transition-all duration-300 ease-in-out"></span>
+        </button>
+      </div>
+    
+      <!-- 手機卷軸選單 -->
+      <div id="mobile-menu" class="lg:hidden hidden bg-[#06201e]/95 border-t border-yellow-500/20 backdrop-blur-md overflow-hidden">
+        <div class="flex flex-col px-6 py-6 space-y-4 font-bold tracking-widest animate-scroll-down">
+          <button onclick="showPage('orientation'); closeMobileMenu()">入學須知</button>
+          <button onclick="showPage('playbooks'); closeMobileMenu()">新生名冊</button>
+          <button onclick="showPage('handbook'); closeMobileMenu()">新生手冊</button>
+          <button onclick="showPage('moves'); closeMobileMenu()">行動指南</button>
+          <button onclick="showPage('DM'); closeMobileMenu()" class="text-red-400">院長機密手冊</button>
+        </div>
+      </div>
+
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('mobile-menu'); // 漢堡點擊後控制的選單
+        
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          menu.classList.toggle('hidden'); // 控制卷軸展開
+          menu.classList.toggle('animate-scroll-down'); // 可加展開動畫
+        });
+      </script>
+      <style>
+        /* 漢堡動畫 */
+        #hamburger span {
+          display: block;
+          width: 2rem;  /* w-8 */
+          height: 0.125rem; /* h-0.5 */
+          background-color: #facc15; /* text-yellow-300 */
+          transition: all 0.4s ease-in-out;
+          transform-origin: center;
+        }
+        
+        #hamburger.open span:nth-child(1) {
+          transform: rotate(45deg) translateY(0.6rem) translateX(0.75rem); /* 旋轉 + 微位移 */
+        }
+        
+        #hamburger.open span:nth-child(2) {
+          opacity: 0; /* 中線消失 */
+        }
+        
+        #hamburger.open span:nth-child(3) {
+          transform: rotate(-45deg) translateY(-0.6rem) translateX(0.75rem); /* 旋轉 + 微位移 */
+        }
+
+      </style>
+  
     </nav>
+
 
     <!-- 首頁 -->
     <main id="page-home" class="page-content active pt-24 pb-20 overflow-hidden">
@@ -1613,7 +1673,7 @@
                 <ul class="list-none gap-2 mt-2">
                   <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">照顧校園的花園地精(Garden gnome)。</li>
                   <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">喜歡惡作劇的皮克西(Pixie)。</li>
-                  <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">據說會讓學生在學院中偏僻之處迷路的鬼火(Will-o’-the-wisp)。</li>
+                  <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">據說會讓學生在學院中偏僻之處迷路的鬼火(Will-o'-the-wisp)。</li>
                   <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">守護學院最大秘密的龍。</li>
                   <li class="before:content-['✢'] before:text-black before:mr-2 mb-2">一個一旦熟識會發現其意外的非常友好的巨魔(troll)。</li>
                   <li class="before:content-['✢'] before:text-black before:mr-2">一整群野生蠍尾獅(manticore)，珍愛生命，遠離蠍尾獅。</li>
@@ -1624,7 +1684,7 @@
 
     
           <!-- 底部按鈕 -->
-          <div class="flex justify-between items-center mt-12 pt-10 -mb-18 border-t-2 border-black/10">
+          <div class="flex justify-between items-center mt-12 pt-10 -mb-20 border-t-2 border-black/10">
             <div class="text-[10px] font-bold opacity-30 uppercase tracking-widest">© Smitherton Academy</div>
             <button onclick="showPage('home')" class="magic-roster-btn serif">關閉手冊</button>
           </div>
@@ -1903,7 +1963,7 @@
       </script>
     </section>
 
-                        
+                  
     <footer class="py-16 bg-[#06201e] border-t border-teal-500/20 mt-15">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="text-magic text-2xl font-bold mb-4 serif">YNAW TRPG</div>
