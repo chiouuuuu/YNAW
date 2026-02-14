@@ -975,7 +975,7 @@
                         </div>
                         <div class="text-center">
                             <button onclick="showPage('handbook')" class="magic-roster-btn serif">
-                                <i class="fas fa-users mr-3"></i> 打開新生手冊
+                                <i class="fas fa-users mr-3"></i> 新生手冊
                             </button>
                         </div>
                     </div>
@@ -2092,12 +2092,33 @@
         <a href="https://www.plurk.com/fgrt463512" target="_blank" class="hex-btn">✉</a>
         <span class="dock-label">聯絡譯者</span>
       </div>
+        
+        <!-- 擲骰按鈕 -->
+        <div class="dock-item group relative flex flex-col items-center">
+          <button id="diceBtn" class="hex-btn">⚀</button>
+          <span class="dock-label">擲六面骰</span>
+        </div>
+        
+        <style>
+        /* 加入翻轉動畫 */
+        @keyframes dice-roll {
+          0%   { transform: rotate(0deg); }
+          25%  { transform: rotate(90deg); }
+          50%  { transform: rotate(180deg); }
+          75%  { transform: rotate(270deg); }
+          100% { transform: rotate(360deg); }
+        }
+        </style>
+
+   
     
     </div>
     <script>
     const floatingDock = document.getElementById("floating-dock");
     const showAfter = 100; // 滾動多少顯示
-    
+    const diceBtn = document.getElementById("diceBtn");
+    const diceLabel = diceBtn.parentElement.querySelector(".dock-label");
+        
     window.addEventListener("scroll", () => {
       if (window.scrollY > showAfter) {
         floatingDock.classList.add("opacity-100");
@@ -2111,6 +2132,33 @@
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    // 初始狀態為骰子
+    let isRolling = false;
+    
+    diceBtn.addEventListener("click", () => {
+      if (isRolling) return;
+    
+      isRolling = true;
+    
+      // 點擊時暫時隱藏 hover label（用 class 控制）
+      diceLabel.classList.add("hidden");
+    
+      // 開始骰子旋轉動畫
+      diceBtn.style.animation = "dice-roll 0.6s ease-in-out";
+    
+      setTimeout(() => {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        diceBtn.textContent = roll;
+    
+        // 清除動畫
+        diceBtn.style.animation = "";
+        isRolling = false;
+    
+        // 動畫結束後恢復 hover 行為
+        diceLabel.classList.remove("hidden");
+      }, 600);
+    });
     </script>
 
 </body>
