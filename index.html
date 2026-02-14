@@ -389,6 +389,72 @@
 
         .text-map-red { color: var(--map-red); }
 
+        /* 六角形按鈕 */
+        .hex-btn {
+          width: 60px;
+          height: 65px;
+          background: var(--teal-dark);
+          color: var(--magic-yellow);
+          font-weight: bold;
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          clip-path: polygon(
+            50% 0%,
+            95% 25%,
+            95% 75%,
+            50% 100%,
+            5% 75%,
+            5% 25%
+          );
+          border: 2px solid var(--magic-yellow);
+          position: relative;
+          z-index: 10;
+        }
+        
+        /* hover 光澤效果 */
+        .hex-btn:hover {
+          background: var(--wax-red);
+          box-shadow:
+            0 0 12px rgba(253, 224, 71, 0.5),
+            0 0 25px rgba(253, 224, 71, 0.2);
+          transform: translateY(-4px);
+        }
+        
+        /* hover label */
+        .dock-label {
+          position: absolute;
+          right: 55px; /* 與六角形距離 */
+          top: 45%;
+          transform: translateY(-50%) translateX(10px);
+          font-size: 12px;
+          letter-spacing: 1px;
+          color: var(--map-ink);
+          background: var(--paper-bg);
+          padding: 5px 10px;
+          border: 1px solid var(--map-ink);
+          opacity: 0;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          border-radius: 0px;
+          pointer-events: none;
+        }
+        
+        /* hover 滑出動畫 */
+        .group:hover .dock-label {
+          opacity: 1;
+          transform: translateY(-50%) translateX(0);
+        }
+        
+        /* 浮動顯示控制（可透過 JS） */
+        #floating-dock.opacity-100 {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -2004,5 +2070,48 @@
             showPage(hash || 'home');
         };
     </script>
+                    
+    <!-- 學院六角功能列 -->
+    <div id="floating-dock"
+         class="fixed right-10 top-1/2 z-50 flex flex-col items-center gap-6 opacity-0 pointer-events-none -translate-y-1/2 transition-opacity duration-500">
+    
+      <!-- 頁面頂端 -->
+      <div class="dock-item group relative flex flex-col items-center">
+        <button onclick="scrollToTop()" class="hex-btn">↑</button>
+        <span class="dock-label">頁面頂端</span>
+      </div>
+    
+      <!-- 購買原文 -->
+      <div class="dock-item group relative flex flex-col items-center">
+        <a href="https://curious-lycan-games.itch.io/youre-not-a-wizard" target="_blank" class="hex-btn">✎</a>
+        <span class="dock-label">購買原文</span>
+      </div>
+    
+      <!-- 聯絡譯者 -->
+      <div class="dock-item group relative flex flex-col items-center">
+        <a href="https://www.plurk.com/fgrt463512" target="_blank" class="hex-btn">✉</a>
+        <span class="dock-label">聯絡譯者</span>
+      </div>
+    
+    </div>
+    <script>
+    const floatingDock = document.getElementById("floating-dock");
+    const showAfter = 100; // 滾動多少顯示
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > showAfter) {
+        floatingDock.classList.add("opacity-100");
+        floatingDock.classList.remove("opacity-0", "pointer-events-none");
+      } else {
+        floatingDock.classList.remove("opacity-100");
+        floatingDock.classList.add("opacity-0", "pointer-events-none");
+      }
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    </script>
+
 </body>
 </html>
