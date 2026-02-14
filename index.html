@@ -507,6 +507,12 @@
           menu.classList.toggle('hidden'); // 控制卷軸展開
           menu.classList.toggle('animate-scroll-down'); // 可加展開動畫
         });
+        function closeMobileMenu() {
+          menu.classList.add('hidden');           // 收起選單
+          menu.classList.remove('animate-scroll-down'); // 移除展開動畫
+          hamburger.classList.remove('open');     // 漢堡按鈕恢復三條線
+        }
+
       </script>
       <style>
         /* 漢堡動畫 */
